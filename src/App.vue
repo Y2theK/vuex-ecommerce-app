@@ -11,6 +11,9 @@ export default {
   components: {
     Home,
   },
+  mounted() {
+    console.log(this.$store.state.Product.products);
+  },
 };
 </script>
 
