@@ -3,9 +3,11 @@
   <div class="product text-center">
     <div class="position-relative mb-3">
       <div class="badge text-white bg-dark"></div>
-      <a class="d-block" href="detail.html"
+      <router-link
+        class="d-block"
+        :to="{ name: 'product-detail', params: { id: product.id } }"
         ><img class="img-fluid" :src="product.image" alt="..."
-      /></a>
+      /></router-link>
       <div class="product-overlay">
         <ul class="mb-0 list-inline">
           <li class="list-inline-item m-0 p-0">
@@ -28,7 +30,11 @@
       </div>
     </div>
     <h6>
-      <a class="reset-anchor" href="detail.html">{{ product.title }}</a>
+      <router-link
+        class="reset-anchor"
+        :to="{ name: 'product-detail', params: { id: product.id } }"
+        >{{ product.title }}</router-link
+      >
     </h6>
     <p class="small text-muted">${{ product.price }}</p>
   </div>
