@@ -141,18 +141,30 @@
         <h2 class="h5 text-uppercase mb-4">Top trending products</h2>
       </header>
       <div class="row">
-        <Product />
+        <div
+          class="col-xl-3 col-lg-4 col-sm-6"
+          v-for="product in Products"
+          :key="product.id"
+        >
+          <Product :product="product" />
+        </div>
       </div>
     </section>
   </div>
 </template>
        
 <script>
+import { mapActions, mapGetters } from "vuex";
 import Product from "./Product.vue";
 export default {
   name: "ProductsList",
   components: {
     Product,
+  },
+  methods: mapActions(["getProducts"]),
+  computed: mapGetters(["Products"]),
+  mounted() {
+    this.getProducts();
   },
 };
 </script>
