@@ -1,8 +1,5 @@
 <template>
-  <section
-    class="hero pb-3 bg-cover bg-center d-flex align-items-center"
-    style="background: url(../../template/img/hero-banner-alt.jpg)"
-  >
+  <section class="hero pb-3 bg-cover bg-center d-flex align-items-center">
     <div class="container py-5">
       <div class="row px-4 px-lg-5">
         <div class="col-lg-6">
@@ -23,5 +20,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+section {
+  background-image: url("../../template/img/hero-banner-alt.jpg");
+}
 </style>
