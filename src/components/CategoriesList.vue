@@ -13,7 +13,9 @@
             class="img-fluid"
             src="../../template/img/cat-img-1.jpg"
             alt=""
-          /><strong class="category-item-title">Clothes</strong></a
+          /><strong class="category-item-title text-center">{{
+            categories[3]
+          }}</strong></a
         >
       </div>
       <div class="col-md-4">
@@ -22,13 +24,13 @@
             class="img-fluid"
             src="../../template/img/cat-img-2.jpg"
             alt=""
-          /><strong class="category-item-title">Shoes</strong></a
+          /><strong class="category-item-title">{{ categories[2] }}</strong></a
         ><a class="category-item" href="shop.html"
           ><img
             class="img-fluid"
             src="../../template/img/cat-img-3.jpg"
             alt=""
-          /><strong class="category-item-title">Watches</strong></a
+          /><strong class="category-item-title">{{ categories[1] }}</strong></a
         >
       </div>
       <div class="col-md-4">
@@ -37,7 +39,7 @@
             class="img-fluid"
             src="../../template/img/cat-img-4.jpg"
             alt=""
-          /><strong class="category-item-title">Electronics</strong></a
+          /><strong class="category-item-title">{{ categories[0] }}</strong></a
         >
       </div>
     </div>
@@ -45,8 +47,14 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "CategoriesList",
+  computed: mapGetters(["categories"]),
+  methods: mapActions(["getCategories"]),
+  mounted() {
+    this.getCategories();
+  },
 };
 </script>
 
