@@ -19,93 +19,9 @@
                       mt-2 mt-sm-0
                       px-xl-2
                     "
-                  >
-                    <div class="swiper product-slider-thumbs">
-                      <div class="swiper-wrapper">
-                        <div class="swiper-slide h-auto swiper-thumb-item mb-3">
-                          <img
-                            class="w-100"
-                            src="img/product-detail-1.jpg"
-                            alt="..."
-                          />
-                        </div>
-                        <div class="swiper-slide h-auto swiper-thumb-item mb-3">
-                          <img
-                            class="w-100"
-                            src="img/product-detail-2.jpg"
-                            alt="..."
-                          />
-                        </div>
-                        <div class="swiper-slide h-auto swiper-thumb-item mb-3">
-                          <img
-                            class="w-100"
-                            src="img/product-detail-3.jpg"
-                            alt="..."
-                          />
-                        </div>
-                        <div class="swiper-slide h-auto swiper-thumb-item mb-3">
-                          <img
-                            class="w-100"
-                            src="img/product-detail-4.jpg"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  ></div>
                   <div class="col-sm-10 order-1 order-sm-2">
-                    <div class="swiper product-slider">
-                      <div class="swiper-wrapper">
-                        <div class="swiper-slide h-auto">
-                          <a
-                            class="glightbox product-view"
-                            href="img/product-detail-1.jpg"
-                            data-gallery="gallery2"
-                            data-glightbox="Product item 1"
-                            ><img
-                              class="img-fluid"
-                              src="img/product-detail-1.jpg"
-                              alt="..."
-                          /></a>
-                        </div>
-                        <div class="swiper-slide h-auto">
-                          <a
-                            class="glightbox product-view"
-                            href="img/product-detail-2.jpg"
-                            data-gallery="gallery2"
-                            data-glightbox="Product item 2"
-                            ><img
-                              class="img-fluid"
-                              src="img/product-detail-2.jpg"
-                              alt="..."
-                          /></a>
-                        </div>
-                        <div class="swiper-slide h-auto">
-                          <a
-                            class="glightbox product-view"
-                            href="img/product-detail-3.jpg"
-                            data-gallery="gallery2"
-                            data-glightbox="Product item 3"
-                            ><img
-                              class="img-fluid"
-                              src="img/product-detail-3.jpg"
-                              alt="..."
-                          /></a>
-                        </div>
-                        <div class="swiper-slide h-auto">
-                          <a
-                            class="glightbox product-view"
-                            href="img/product-detail-4.jpg"
-                            data-gallery="gallery2"
-                            data-glightbox="Product item 4"
-                            ><img
-                              class="img-fluid"
-                              src="img/product-detail-4.jpg"
-                              alt="..."
-                          /></a>
-                        </div>
-                      </div>
-                    </div>
+                    <img class="img-fluid" :src="Product.image" alt="..." />
                   </div>
                 </div>
               </div>
@@ -128,13 +44,10 @@
                     <i class="fas fa-star small text-warning"></i>
                   </li>
                 </ul>
-                <h1>Red digital smartwatch</h1>
-                <p class="text-muted lead">$250</p>
+                <h1>{{ Product.title }}</h1>
+                <p class="text-muted lead">{{ Product.price }}</p>
                 <p class="text-sm mb-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut
-                  ullamcorper leo, eget euismod orci. Cum sociis natoque
-                  penatibus et magnis dis parturient montes nascetur ridiculus
-                  mus. Vestibulum ultricies aliquam convallis.
+                  {{ Product.description }}
                 </p>
                 <div class="row align-items-stretch mb-4">
                   <div class="col-sm-5 pr-sm-0">
@@ -152,7 +65,7 @@
                     >
                       <span
                         class="small text-uppercase text-gray mr-4 no-select"
-                        >Quantity</span
+                        >{{ Product.rating.count }}</span
                       >
                       <div class="quantity">
                         <button class="dec-btn p-0">
@@ -189,16 +102,22 @@
                 ><br />
                 <ul class="list-unstyled small d-inline-block">
                   <li class="px-3 py-2 mb-1 bg-white">
-                    <strong class="text-uppercase">SKU:</strong
-                    ><span class="ms-2 text-muted">039</span>
+                    <strong class="text-uppercase">In Stocj:</strong
+                    ><span class="ms-2 text-muted">{{
+                      Product.rating.count
+                    }}</span>
                   </li>
                   <li class="px-3 py-2 mb-1 bg-white text-muted">
                     <strong class="text-uppercase text-dark">Category:</strong
-                    ><a class="reset-anchor ms-2" href="#!">Demo Products</a>
+                    ><a class="reset-anchor ms-2" href="#!">{{
+                      Product.category
+                    }}</a>
                   </li>
                   <li class="px-3 py-2 mb-1 bg-white text-muted">
-                    <strong class="text-uppercase text-dark">Tags:</strong
-                    ><a class="reset-anchor ms-2" href="#!">Innovation</a>
+                    <strong class="text-uppercase text-dark">Ratings:</strong
+                    ><a class="reset-anchor ms-2" href="#!">{{
+                      Product.rating.rate
+                    }}</a>
                   </li>
                 </ul>
               </div>
@@ -240,14 +159,7 @@
                 <div class="p-4 p-lg-5 bg-white">
                   <h6 class="text-uppercase">Product description</h6>
                   <p class="text-muted text-sm mb-0">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
+                    {{ Product.description }}
                   </p>
                 </div>
               </div>
@@ -523,11 +435,20 @@
     </body>
   </html>
 </template>
-<script src="../assets/myjs.js"></script>
+
 <script>
-export default {};
+import { mapActions, mapGetters } from "vuex";
+export default {
+  methods: mapActions(["getProduct"]),
+  computed: mapGetters(["Product"]),
+  mounted() {
+    this.getProduct(this.$route.params.id);
+  },
+};
 </script>
 
-<style>
-@import url("../assets/mycss.css");
+<style scoped>
+img {
+  width: auto;
+}
 </style>
