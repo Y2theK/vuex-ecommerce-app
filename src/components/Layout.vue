@@ -7,9 +7,7 @@
         <!-- navbar-->
         <Navbar />
 
-        <div class="container">
-          <router-view></router-view>
-        </div>
+        <slot></slot>
 
         <Footer />
 
@@ -24,32 +22,21 @@
     </body>
   </html>
 </template>
-
 <script src="../assets/myjs.js"></script>
-<script>
-import ProductsList from "./ProductsList.vue";
-import CategoriesList from "./CategoriesList.vue";
-import Navbar from "./Navbar.vue";
-import Services from "./Services.vue";
-import NewsLetter from "./NewsLetter.vue";
-import Footer from "./Footer.vue";
-import HeroSection from "./HeroSection.vue";
-import Header from "./Header.vue";
 
-export default {
-  name: "Home",
-  components: {
-    ProductsList,
-    CategoriesList,
-    Navbar,
-    Services,
-    NewsLetter,
-    Footer,
-    HeroSection,
-    Header,
-  },
-};
-</script>
 <style>
 @import url("../assets/mycss.css");
 </style>
+<script>
+import Header from "./Header.vue";
+import Navbar from "./Navbar.vue";
+import Footer from "./Footer.vue";
+export default {
+  name: "Home",
+  components: {
+    Header,
+    Navbar,
+    Footer,
+  },
+};
+</script>
