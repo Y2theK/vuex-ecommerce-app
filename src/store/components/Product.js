@@ -21,8 +21,14 @@ export default {
     },
   },
   actions: {
-    async getProducts({ commit }) {
-      let res = await axios.get("https://fakestoreapi.com/products");
+    async getProducts({ commit }, limit) {
+      let api_endpoint = `https://fakestoreapi.com/products`;
+      if (limit) {
+        api_endpoint += `?limit=${limit}`;
+      }
+      console.log(api_endpoint);
+      let res = await axios.get(api_endpoint);
+
       commit("setProducts", res.data);
     },
     async getProduct({ commit }, id) {

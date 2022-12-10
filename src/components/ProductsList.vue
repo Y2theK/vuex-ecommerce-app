@@ -23,8 +23,16 @@ export default {
   methods: mapActions(["getProducts"]),
   computed: mapGetters(["Products"]),
   mounted() {
-    console.log(this.$route);
-    this.getProducts();
+    // if route is shop we will limit the product to 9 and show with pagination
+    if (this.$route.name === "shop") {
+      const LIMIT = 9;
+      this.getProducts(LIMIT);
+    } else {
+      this.getProducts();
+    }
+  },
+  watch: {
+    $route() {},
   },
 };
 </script>
