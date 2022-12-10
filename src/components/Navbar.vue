@@ -20,12 +20,18 @@
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
               <!-- Link-->
-              <router-link class="nav-link active" :to="{ name: 'home' }"
+              <router-link
+                class="nav-link"
+                :class="{ active: $route.name === 'home' }"
+                :to="{ name: 'home' }"
                 >Home</router-link
               >
             </li>
             <li class="nav-item">
-              <!-- Link--><router-link class="nav-link" :to="{ name: 'shop' }"
+              <!-- Link--><router-link
+                class="nav-link"
+                :class="{ active: $route.name === 'shop' }"
+                :to="{ name: 'shop' }"
                 >Shop</router-link
               >
             </li>
