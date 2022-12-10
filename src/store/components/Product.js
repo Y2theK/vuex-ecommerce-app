@@ -29,5 +29,12 @@ export default {
       let res = await axios.get(`https://fakestoreapi.com/products/${id}`);
       commit("setProduct", res.data);
     },
+    async getRelatedProducts({ commit }, category) {
+      const LIMIT = 4; //default limit
+      let res = await axios.get(
+        `https://fakestoreapi.com/products/category/${category}?limit=${LIMIT}`
+      );
+      commit("setProducts", res.data);
+    },
   },
 };
