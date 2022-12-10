@@ -2,8 +2,10 @@
   <header class="header bg-white">
     <div class="container px-lg-3">
       <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
-        <a class="navbar-brand" href="index.html"
-          ><span class="fw-bold text-uppercase text-dark">Boutique</span></a
+        <router-link class="navbar-brand" :to="{ name: 'home' }"
+          ><span class="fw-bold text-uppercase text-dark"
+            >Boutique</span
+          ></router-link
         >
         <button
           class="navbar-toggler navbar-toggler-end"
@@ -38,11 +40,15 @@
           </ul>
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="cart.html">
+              <router-link
+                class="nav-link"
+                :class="{ active: $route.name === 'cart' }"
+                :to="{ name: 'cart' }"
+              >
                 <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart<small
                   class="text-gray fw-normal"
                   >(2)</small
-                ></a
+                ></router-link
               >
             </li>
             <li class="nav-item">

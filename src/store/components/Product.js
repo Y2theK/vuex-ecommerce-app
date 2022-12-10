@@ -26,7 +26,6 @@ export default {
       if (limit) {
         api_endpoint += `?limit=${limit}`;
       }
-      console.log(api_endpoint);
       let res = await axios.get(api_endpoint);
 
       commit("setProducts", res.data);
