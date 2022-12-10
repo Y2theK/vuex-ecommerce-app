@@ -7,7 +7,9 @@
             New Inspiration 2020
           </p>
           <h1 class="h2 text-uppercase mb-3">20% off on new season</h1>
-          <a class="btn btn-dark" href="shop.html">Browse collections</a>
+          <router-link class="btn btn-dark" :to="{ name: 'shop' }"
+            >Browse collections</router-link
+          >
         </div>
       </div>
     </div>

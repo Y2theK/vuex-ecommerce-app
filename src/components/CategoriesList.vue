@@ -8,38 +8,44 @@
     </header>
     <div class="row">
       <div class="col-md-4">
-        <a class="category-item" href="shop.html"
+        <router-link class="category-item" :to="{ name: 'shop' }"
           ><img
             class="img-fluid"
             src="../../template/img/cat-img-1.jpg"
             alt=""
           /><strong class="category-item-title text-center">{{
             categories[3]
-          }}</strong></a
+          }}</strong></router-link
         >
       </div>
       <div class="col-md-4">
-        <a class="category-item mb-4" href="shop.html"
+        <router-link class="category-item mb-4" :to="{ name: 'shop' }"
           ><img
             class="img-fluid"
             src="../../template/img/cat-img-2.jpg"
             alt=""
-          /><strong class="category-item-title">{{ categories[2] }}</strong></a
-        ><a class="category-item" href="shop.html"
+          /><strong class="category-item-title">{{
+            categories[2]
+          }}</strong></router-link
+        ><router-link class="category-item" :to="{ name: 'shop' }"
           ><img
             class="img-fluid"
             src="../../template/img/cat-img-3.jpg"
             alt=""
-          /><strong class="category-item-title">{{ categories[1] }}</strong></a
+          /><strong class="category-item-title">{{
+            categories[1]
+          }}</strong></router-link
         >
       </div>
       <div class="col-md-4">
-        <a class="category-item" href="shop.html"
+        <router-link class="category-item" :to="{ name: 'shop' }"
           ><img
             class="img-fluid"
             src="../../template/img/cat-img-4.jpg"
             alt=""
-          /><strong class="category-item-title">{{ categories[0] }}</strong></a
+          /><strong class="category-item-title">{{
+            categories[0]
+          }}</strong></router-link
         >
       </div>
     </div>
