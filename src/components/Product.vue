@@ -52,7 +52,7 @@ export default {
 <style scoped>
 img {
   /* width: auto; */
-  height: 200px;
+  height: 250px;
   object-fit: contain;
   /* border: 1px solid red; */
 }
