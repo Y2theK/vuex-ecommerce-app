@@ -1,15 +1,24 @@
 <template>
   <!--  Modal -->
 
-  <div v-if="Product">
+  <div v-if="Product" class="">
     <button
       class="btn-close p-4 position-absolute top-0 end-0 z-index-20 shadow-0"
       type="button"
       @click="modalClose"
     ></button>
-    <!-- <div class="modal-body p-0">  -->
+
     <div class="row align-items-stretch">
-      <div class="col-lg-6 p-lg-0">
+      <div
+        class="
+          col-lg-6
+          p-lg-0
+          product
+          d-flex
+          justify-content-center
+          align-items-center
+        "
+      >
         <img class="img-fluid" :src="Product.image" alt="..." />
       </div>
       <div class="col-lg-6">
@@ -89,19 +98,16 @@
       </div>
     </div>
   </div>
-  <!-- </div>
-      </div>
-    </div>
-  </div> -->
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
 export default {
   name: "ProductModal",
-  computed: mapGetters(["Product"]),
+  props: {
+    Product: Object,
+  },
+
   methods: {
-    ...mapActions(["getProduct"]),
     modalClose: function () {
       this.$emit("closeModal");
     },
@@ -109,5 +115,5 @@ export default {
 };
 </script>
 
-<style>
+<style >
 </style>

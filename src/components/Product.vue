@@ -10,7 +10,7 @@
       centered
       size="lg"
     >
-      <product-modal @closeModal="hideModal"></product-modal>
+      <product-modal @closeModal="hideModal" :Product="product"></product-modal>
     </b-modal>
     <div class="position-relative mb-3">
       <div class="badge text-white bg-dark"></div>
@@ -32,10 +32,7 @@
             >
           </li>
           <li class="list-inline-item me-0">
-            <a
-              class="btn btn-sm btn-outline-dark"
-              @click="showModal(product.id)"
-            >
+            <a class="btn btn-sm btn-outline-dark" @click="showModal()">
               <i class="fas fa-expand"></i>
             </a>
           </li>
@@ -54,7 +51,6 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
 import ProductModal from "./ProductModal.vue";
 export default {
   name: "Product",
@@ -64,15 +60,11 @@ export default {
   props: {
     product: Object,
   },
-
   methods: {
-    ...mapActions(["getProduct", "getEmptyProduct"]),
     hideModal: function () {
-      this.getEmptyProduct();
       this.$refs["my-modal"].hide();
     },
-    showModal(id) {
-      this.getProduct(id);
+    showModal() {
       this.$refs["my-modal"].show();
     },
   },

@@ -1,13 +1,7 @@
 <template>
-  <div>
-    <div class="row">
-      <div
-        :class="columnXlLayout"
-        v-for="product in Products"
-        :key="product.id"
-      >
-        <Product :product="product" />
-      </div>
+  <div class="row">
+    <div :class="columnXlLayout" v-for="product in Products" :key="product.id">
+      <Product :product="product" />
     </div>
   </div>
 </template>
