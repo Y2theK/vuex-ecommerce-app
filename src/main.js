@@ -3,8 +3,8 @@ import App from "./App.vue";
 import store from "./store";
 import router from "./router";
 Vue.config.productionTip = false;
-// import { BootstrapVue, IconsPlugin,  } from "bootstrap-vue";
-import { TabsPlugin } from "bootstrap-vue";
+// import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+import { TabsPlugin, ModalPlugin } from "bootstrap-vue";
 
 // Import Bootstrap and BootstrapVue CSS files (order is important)
 // import "bootstrap/dist/css/bootstrap.css";
@@ -15,6 +15,7 @@ import { TabsPlugin } from "bootstrap-vue";
 // Optionally install the BootstrapVue icon components plugin
 // Vue.use(IconsPlugin);
 Vue.use(TabsPlugin);
+Vue.use(ModalPlugin);
 new Vue({
   store,
   router,

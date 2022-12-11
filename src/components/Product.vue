@@ -1,6 +1,17 @@
 <template>
   <!-- PRODUCT-->
   <div class="product text-center">
+    <b-modal
+      hide-backdrop
+      ref="my-modal"
+      hide-footer
+      hide-header
+      tabindex="-1"
+      centered
+      size="lg"
+    >
+      <product-modal @closeModal="hideModal"></product-modal>
+    </b-modal>
     <div class="position-relative mb-3">
       <div class="badge text-white bg-dark"></div>
       <router-link
@@ -21,12 +32,9 @@
             >
           </li>
           <li class="list-inline-item me-0">
-            <a
-              class="btn btn-sm btn-outline-dark"
-              href="#productView"
-              data-bs-toggle="modal"
-              ><i class="fas fa-expand"></i
-            ></a>
+            <a class="btn btn-sm btn-outline-dark" @click="showModal">
+              <i class="fas fa-expand"></i>
+            </a>
           </li>
         </ul>
       </div>
@@ -43,10 +51,26 @@
 </template>
 
 <script>
+import ProductModal from "./ProductModal.vue";
 export default {
   name: "Product",
+  components: {
+    ProductModal,
+  },
   props: {
     product: Object,
+  },
+  methods: {
+    hideModal: function () {
+      // console.log(this.$refs["my-modal"]);
+      // console.log("hide");
+      this.$refs["my-modal"].hide();
+    },
+    showModal() {
+      // console.log("show");
+      this.$refs["my-modal"].show();
+      // this.$refs["my-product"].style.opacity = 0.5;
+    },
   },
 };
 </script>
