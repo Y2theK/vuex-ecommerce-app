@@ -5,10 +5,8 @@
         <div class="col-lg-6">
           <!-- PRODUCT SLIDER-->
           <div class="row m-sm-0">
-            <div
-              class="col-sm-2 p-sm-0 order-2 order-sm-1 mt-2 mt-sm-0 px-xl-2"
-            ></div>
-            <div class="col-sm-10 order-1 order-sm-2">
+            <div class="col-sm-2 p-sm-0 mt-2 mt-sm-0 px-2 me-4"></div>
+            <div class="col-sm-10">
               <img class="img-fluid" :src="Product.image" alt="..." />
             </div>
           </div>
@@ -110,142 +108,109 @@
         </div>
       </div>
       <!-- DETAILS TABS-->
-      <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
-        <li class="nav-item">
-          <a
-            class="nav-link text-uppercase active"
-            id="description-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#description"
-            href="#description"
-            role="tab"
-            aria-controls="description"
-            aria-selected="true"
-            >Description</a
+      <div>
+        <b-tabs content-class="mt-3">
+          <b-tab title="Description" active
+            ><div class="p-4 p-lg-5 bg-white">
+              <h6 class="text-uppercase">Product description</h6>
+              <p class="text-muted text-sm mb-0">
+                {{ Product.description }}
+              </p>
+            </div></b-tab
           >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link text-uppercase"
-            id="reviews-tab"
-            data-bs-toggle="tab"
-            href="#reviews"
-            data-bs-target="#reviews"
-            role="tab"
-            aria-controls="reviews"
-            aria-selected="false"
-            >Reviews</a
-          >
-        </li>
-      </ul>
-      <div class="tab-content mb-5" id="myTabContent">
-        <div
-          class="tab-pane fade show active"
-          id="description"
-          role="tabpanel"
-          aria-labelledby="description-tab"
-        >
-          <div class="p-4 p-lg-5 bg-white">
-            <h6 class="text-uppercase">Product description</h6>
-            <p class="text-muted text-sm mb-0">
-              {{ Product.description }}
-            </p>
-          </div>
-        </div>
-        <div
-          class="tab-pane fade"
-          id="reviews"
-          role="tabpanel"
-          aria-labelledby="reviews-tab"
-        >
-          <div class="p-4 p-lg-5 bg-white">
-            <div class="row">
-              <div class="col-lg-8">
-                <div class="d-flex mb-3">
-                  <div class="flex-shrink-0">
-                    <img
-                      class="rounded-circle"
-                      src="../../template/img/customer-1.png"
-                      alt=""
-                      width="50"
-                    />
+          <b-tab title="Review">
+            <div class="p-4 p-lg-5 bg-white">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="d-flex mb-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="rounded-circle"
+                        src="../../template/img/customer-1.png"
+                        alt=""
+                        width="50px"
+                        height="50px"
+                      />
+                    </div>
+                    <div class="ms-3 flex-shrink-1">
+                      <h6 class="mb-0 text-uppercase">Jason Doe</h6>
+                      <p class="small text-muted mb-0 text-uppercase">
+                        20 May 2020
+                      </p>
+                      <ul class="list-inline mb-1 text-xs">
+                        <li class="list-inline-item m-0">
+                          <i class="fas fa-star text-warning"></i>
+                        </li>
+                        <li class="list-inline-item m-0">
+                          <i class="fas fa-star text-warning"></i>
+                        </li>
+                        <li class="list-inline-item m-0">
+                          <i class="fas fa-star text-warning"></i>
+                        </li>
+                        <li class="list-inline-item m-0">
+                          <i class="fas fa-star text-warning"></i>
+                        </li>
+                        <li class="list-inline-item m-0">
+                          <i class="fas fa-star-half-alt text-warning"></i>
+                        </li>
+                      </ul>
+                      <p class="text-sm mb-0 text-muted">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua.
+                      </p>
+                    </div>
                   </div>
-                  <div class="ms-3 flex-shrink-1">
-                    <h6 class="mb-0 text-uppercase">Jason Doe</h6>
-                    <p class="small text-muted mb-0 text-uppercase">
-                      20 May 2020
-                    </p>
-                    <ul class="list-inline mb-1 text-xs">
-                      <li class="list-inline-item m-0">
-                        <i class="fas fa-star text-warning"></i>
-                      </li>
-                      <li class="list-inline-item m-0">
-                        <i class="fas fa-star text-warning"></i>
-                      </li>
-                      <li class="list-inline-item m-0">
-                        <i class="fas fa-star text-warning"></i>
-                      </li>
-                      <li class="list-inline-item m-0">
-                        <i class="fas fa-star text-warning"></i>
-                      </li>
-                      <li class="list-inline-item m-0">
-                        <i class="fas fa-star-half-alt text-warning"></i>
-                      </li>
-                    </ul>
-                    <p class="text-sm mb-0 text-muted">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.
-                    </p>
-                  </div>
-                </div>
-                <div class="d-flex">
-                  <div class="flex-shrink-0">
-                    <img
-                      class="rounded-circle"
-                      src="../../template/img/customer-2.png"
-                      alt=""
-                      width="50"
-                    />
-                  </div>
-                  <div class="ms-3 flex-shrink-1">
-                    <h6 class="mb-0 text-uppercase">Jane Doe</h6>
-                    <p class="small text-muted mb-0 text-uppercase">
-                      20 May 2020
-                    </p>
-                    <ul class="list-inline mb-1 text-xs">
-                      <li class="list-inline-item m-0">
-                        <i class="fas fa-star text-warning"></i>
-                      </li>
-                      <li class="list-inline-item m-0">
-                        <i class="fas fa-star text-warning"></i>
-                      </li>
-                      <li class="list-inline-item m-0">
-                        <i class="fas fa-star text-warning"></i>
-                      </li>
-                      <li class="list-inline-item m-0">
-                        <i class="fas fa-star text-warning"></i>
-                      </li>
-                      <li class="list-inline-item m-0">
-                        <i class="fas fa-star-half-alt text-warning"></i>
-                      </li>
-                    </ul>
-                    <p class="text-sm mb-0 text-muted">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.
-                    </p>
+                  <div class="d-flex">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="rounded-circle"
+                        src="../../template/img/customer-2.png"
+                        alt=""
+                        width="50px"
+                        height="50px"
+                      />
+                    </div>
+                    <div class="ms-3 flex-shrink-1">
+                      <h6 class="mb-0 text-uppercase">Jane Doe</h6>
+                      <p class="small text-muted mb-0 text-uppercase">
+                        20 May 2020
+                      </p>
+                      <ul class="list-inline mb-1 text-xs">
+                        <li class="list-inline-item m-0">
+                          <i class="fas fa-star text-warning"></i>
+                        </li>
+                        <li class="list-inline-item m-0">
+                          <i class="fas fa-star text-warning"></i>
+                        </li>
+                        <li class="list-inline-item m-0">
+                          <i class="fas fa-star text-warning"></i>
+                        </li>
+                        <li class="list-inline-item m-0">
+                          <i class="fas fa-star text-warning"></i>
+                        </li>
+                        <li class="list-inline-item m-0">
+                          <i class="fas fa-star-half-alt text-warning"></i>
+                        </li>
+                      </ul>
+                      <p class="text-sm mb-0 text-muted">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
+            </div></b-tab
+          >
+        </b-tabs>
       </div>
       <RelatedProducts :category="Product.category" />
     </div>
   </section>
 </template>
+
 
 <script>
 import { mapActions, mapGetters } from "vuex";
