@@ -1,8 +1,6 @@
 <template>
   <!--  Modal -->
-  <!-- <div class="modal fade" id="productView" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content overflow-hidden border-0">-->
+
   <div>
     <button
       class="btn-close p-4 position-absolute top-0 end-0 z-index-20 shadow-0"
@@ -109,7 +107,7 @@ export default {
   name: "ProductModal",
   methods: {
     modalClose: function () {
-      console.log("close modal");
+      // console.log("close modal");
       this.$emit("closeModal");
     },
   },

@@ -4,6 +4,17 @@
     <h2 class="h5 text-uppercase mb-4">Related products</h2>
     <div class="row">
       <!-- PRODUCT-->
+      <b-modal
+        hide-backdrop
+        ref="product-modal"
+        hide-footer
+        hide-header
+        tabindex="-1"
+        centered
+        size="lg"
+      >
+        <product-modal @closeModal="hideModal"></product-modal>
+      </b-modal>
       <div
         class="col-lg-3 col-sm-6"
         v-for="product in Products"
@@ -27,12 +38,9 @@
                   <a class="btn btn-sm btn-dark" href="#!">Add to cart</a>
                 </li>
                 <li class="list-inline-item mr-0">
-                  <a
-                    class="btn btn-sm btn-outline-dark"
-                    href="#productView"
-                    data-bs-toggle="modal"
-                    ><i class="fas fa-expand"></i
-                  ></a>
+                  <a class="btn btn-sm btn-outline-dark" @click="showModal">
+                    <i class="fas fa-expand"></i>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -53,17 +61,28 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-
+import ProductModal from "./ProductModal.vue";
 export default {
   name: "RelatedProducts",
   props: {
     category: String,
   },
+  components: {
+    ProductModal,
+  },
   computed: mapGetters(["Products"]),
-  methods: mapActions(["getRelatedProducts"]),
   mounted() {
-    console.log(this.category);
+    // console.log(this.category);
     this.getRelatedProducts(this.category);
+  },
+  methods: {
+    ...mapActions(["getRelatedProducts"]),
+    hideModal: function () {
+      this.$refs["product-modal"].hide();
+    },
+    showModal() {
+      this.$refs["product-modal"].show();
+    },
   },
 };
 </script>
