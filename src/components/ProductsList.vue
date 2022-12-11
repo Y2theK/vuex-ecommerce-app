@@ -2,7 +2,7 @@
   <div>
     <div class="row">
       <div
-        class="col-xl-4 col-lg-4 col-sm-6"
+        :class="columnXlLayout"
         v-for="product in Products"
         :key="product.id"
       >
@@ -17,6 +17,12 @@ import { mapActions, mapGetters } from "vuex";
 import Product from "./Product.vue";
 export default {
   name: "ProductsList",
+  props: {
+    columnXlLayout: {
+      type: String,
+      default: "col-xl-3 col-lg-4 col-sm-6",
+    },
+  },
   components: {
     Product,
   },

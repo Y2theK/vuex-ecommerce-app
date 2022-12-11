@@ -170,7 +170,9 @@
             </div>
 
             <!-- PRODUCT-->
-            <ProductsList />
+            <section>
+              <ProductsList column-xl-layout="col-xl-4 col-lg-4 col-sm-6" />
+            </section>
 
             <!-- PAGINATION-->
             <nav aria-label="Page navigation example">
@@ -208,6 +210,7 @@
 <script>
 import ProductsList from "./ProductsList.vue";
 export default {
+  name: "Shop",
   components: {
     ProductsList,
   },

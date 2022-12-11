@@ -262,6 +262,7 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 export default {
+  name: "Cart",
   computed: mapGetters(["carts"]),
   methods: mapActions(["getUserCarts"]),
   mounted() {

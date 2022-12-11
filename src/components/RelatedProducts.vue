@@ -55,6 +55,7 @@
 import { mapActions, mapGetters } from "vuex";
 
 export default {
+  name: "RelatedProducts",
   props: {
     category: String,
   },

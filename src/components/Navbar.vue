@@ -4,7 +4,7 @@
       <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
         <router-link class="navbar-brand" :to="{ name: 'home' }"
           ><span class="fw-bold text-uppercase text-dark"
-            >Boutique</span
+            >LaraXVue</span
           ></router-link
         >
         <button

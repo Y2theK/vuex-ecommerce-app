@@ -6,7 +6,7 @@ require("../../template/vendor/nouislider/nouislider.min.js");
 require("../../template/vendor/swiper/swiper-bundle.min.js");
 require("../../template/vendor/choices.js/public/assets/scripts/choices.min.js");
 require("../../template/js/front.js");
-// ------------------------------------------------------- //
+// ------------------------------------------------------- /
 //   Inject SVG Sprite -
 //   see more here
 //   https://css-tricks.com/ajaxing-svg-sprite/

@@ -16,7 +16,9 @@
             ></a>
           </li>
           <li class="list-inline-item m-0 p-0">
-            <a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a>
+            <router-link class="btn btn-sm btn-dark" :to="{ name: 'cart' }"
+              >Add to cart</router-link
+            >
           </li>
           <li class="list-inline-item me-0">
             <a

@@ -116,6 +116,7 @@
             class="nav-link text-uppercase active"
             id="description-tab"
             data-bs-toggle="tab"
+            data-bs-target="#description"
             href="#description"
             role="tab"
             aria-controls="description"
@@ -129,6 +130,7 @@
             id="reviews-tab"
             data-bs-toggle="tab"
             href="#reviews"
+            data-bs-target="#reviews"
             role="tab"
             aria-controls="reviews"
             aria-selected="false"
@@ -249,6 +251,7 @@
 import { mapActions, mapGetters } from "vuex";
 import RelatedProducts from "./RelatedProducts.vue";
 export default {
+  name: "ProductDetail",
   components: {
     RelatedProducts,
   },

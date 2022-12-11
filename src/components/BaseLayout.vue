@@ -32,7 +32,7 @@ import Header from "./Header.vue";
 import Navbar from "./Navbar.vue";
 import Footer from "./Footer.vue";
 export default {
-  name: "Home",
+  name: "BaseLayout",
   components: {
     Header,
     Navbar,
