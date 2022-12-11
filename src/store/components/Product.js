@@ -11,6 +11,9 @@ export default {
     Product(state) {
       return state.product;
     },
+    ProductsTotalCount(state) {
+      return state.products.length;
+    },
   },
   mutations: {
     setProducts(state, products) {
@@ -24,14 +27,35 @@ export default {
     },
   },
   actions: {
-    async getProducts({ commit }, limit) {
-      let api_endpoint = `https://fakestoreapi.com/products`;
-      if (limit) {
-        api_endpoint += `?limit=${limit}`;
-      }
+    async getProducts({ commit }, { page, limit }) {
+      // page -> items
+      // 1 -> 1-9 -> 0
+      // 2 -> 10-18 -> 9
+      // 3 -> 19-27 -> 18
+      // ...
+      if (!page) page = 1;
+      if (!limit) limit = 9;
+      //to number
+      page = Number(page);
+      limit = Number(limit);
+      //minimum acceptable page is 3
+      page = page < 1 ? 1 : page;
+      //minimum acceptable limit is 3
+      limit = limit < 3 ? 3 : limit;
+      //minimum acceptable page is page * limit
+      page = page * limit < 20 ? page : Math.ceil(20 / limit);
+      //skipper
+      const skip = (page - 1) * limit;
+      // console.log({ page, limit, skip });
+      //since we dont have skip api, i did what i can for pagination
+      const api_endpoint = `https://fakestoreapi.com/products?limit=${
+        limit + skip
+      }`;
+      // console.log(api_endpoint);
       let res = await axios.get(api_endpoint);
+      res = res.data.slice(skip, skip + limit);
 
-      commit("setProducts", res.data);
+      commit("setProducts", res);
     },
     async getProduct({ commit }, id) {
       let res = await axios.get(`https://fakestoreapi.com/products/${id}`);

@@ -177,25 +177,54 @@
             <!-- PAGINATION-->
             <nav aria-label="Page navigation example">
               <ul
-                class="pagination justify-content-center justify-content-lg-end"
+                class="
+                  pagination
+                  d-flex
+                  justify-content-center justify-content-lg-end
+                "
               >
                 <li class="page-item mx-1">
-                  <a class="page-link" href="#!" aria-label="Previous"
-                    ><span aria-hidden="true">«</span></a
+                  <router-link
+                    class="page-link"
+                    :to="{
+                      name: 'shop',
+                      query: {
+                        ...$route.query,
+                        page: Number($route.query.page) - 1,
+                      },
+                    }"
+                    aria-label="Previous"
+                    ><span aria-hidden="true">«</span></router-link
                   >
                 </li>
-                <li class="page-item mx-1 active">
-                  <a class="page-link" href="#!">1</a>
-                </li>
-                <li class="page-item mx-1">
-                  <a class="page-link" href="#!">2</a>
-                </li>
-                <li class="page-item mx-1">
-                  <a class="page-link" href="#!">3</a>
-                </li>
-                <li class="page-item ms-1">
-                  <a class="page-link" href="#!" aria-label="Next"
-                    ><span aria-hidden="true">»</span></a
+                <div v-for="count in pageCount" :key="count">
+                  <li
+                    class="page-item mx-1"
+                    :class="{ active: Number($route.query.page) === count }"
+                  >
+                    <router-link
+                      class="page-link"
+                      :to="{
+                        name: 'shop',
+                        query: { ...$route.query, page: count },
+                      }"
+                      >{{ count }}</router-link
+                    >
+                  </li>
+                </div>
+                <li class="page-item ms-1" disabled>
+                  <router-link
+                    :disabled="pageCount * Number($route.query.limit) >= 20"
+                    class="page-link"
+                    :to="{
+                      name: 'shop',
+                      query: {
+                        ...$route.query,
+                        page: Number($route.query.page) + 1,
+                      },
+                    }"
+                    aria-label="Next"
+                    ><span aria-hidden="true">»</span></router-link
                   >
                 </li>
               </ul>
@@ -211,8 +240,22 @@
 import ProductsList from "./ProductsList.vue";
 export default {
   name: "Shop",
+  data() {
+    return {
+      pageCount: null,
+    };
+  },
   components: {
     ProductsList,
+  },
+  mounted() {
+    const queryLimit = Number(this.$route.query.limit);
+    const productsTotal = 20;
+    //minimum acceptable limit is 3
+    //default limit is 9
+    let limit = queryLimit ? (queryLimit < 3 ? 3 : queryLimit) : 9;
+    this.pageCount = Math.ceil(productsTotal / limit);
+    // console.log(this.pageCount);
   },
 };
 </script>

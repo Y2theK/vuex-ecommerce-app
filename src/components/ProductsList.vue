@@ -23,16 +23,22 @@ export default {
   methods: mapActions(["getProducts"]),
   computed: mapGetters(["Products"]),
   mounted() {
-    // if route is shop we will limit the product to 9 and show with pagination
     if (this.$route.name === "shop") {
-      const LIMIT = 9;
-      this.getProducts(LIMIT);
+      this.getProducts({
+        page: this.$route.query.page,
+        limit: this.$route.query.limit,
+      });
     } else {
-      this.getProducts();
+      this.getProducts({ limit: 20 });
     }
   },
   watch: {
-    $route() {},
+    $route() {
+      this.getProducts({
+        page: this.$route.query.page,
+        limit: this.$route.query.limit,
+      });
+    },
   },
 };
 </script>
