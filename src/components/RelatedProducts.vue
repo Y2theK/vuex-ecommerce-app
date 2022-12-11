@@ -38,7 +38,10 @@
                   <a class="btn btn-sm btn-dark" href="#!">Add to cart</a>
                 </li>
                 <li class="list-inline-item mr-0">
-                  <a class="btn btn-sm btn-outline-dark" @click="showModal">
+                  <a
+                    class="btn btn-sm btn-outline-dark"
+                    @click="showModal(product.id)"
+                  >
                     <i class="fas fa-expand"></i>
                   </a>
                 </li>
@@ -76,11 +79,13 @@ export default {
     this.getRelatedProducts(this.category);
   },
   methods: {
-    ...mapActions(["getRelatedProducts"]),
+    ...mapActions(["getRelatedProducts", "getProduct"]),
     hideModal: function () {
+      this.getProduct(this.$route.params.id);
       this.$refs["product-modal"].hide();
     },
-    showModal() {
+    showModal(id) {
+      this.getProduct(id);
       this.$refs["product-modal"].show();
     },
   },

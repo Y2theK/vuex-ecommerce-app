@@ -19,6 +19,9 @@ export default {
     setProduct(state, product) {
       state.product = product;
     },
+    emptyProduct(state, emptyObject) {
+      state.product = emptyObject;
+    },
   },
   actions: {
     async getProducts({ commit }, limit) {
@@ -40,6 +43,9 @@ export default {
         `https://fakestoreapi.com/products/category/${category}?limit=${LIMIT}`
       );
       commit("setProducts", res.data);
+    },
+    async getEmptyProduct({ commit }) {
+      commit("emptyProduct", {});
     },
   },
 };

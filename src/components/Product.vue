@@ -32,7 +32,10 @@
             >
           </li>
           <li class="list-inline-item me-0">
-            <a class="btn btn-sm btn-outline-dark" @click="showModal">
+            <a
+              class="btn btn-sm btn-outline-dark"
+              @click="showModal(product.id)"
+            >
               <i class="fas fa-expand"></i>
             </a>
           </li>
@@ -51,6 +54,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 import ProductModal from "./ProductModal.vue";
 export default {
   name: "Product",
@@ -60,16 +64,16 @@ export default {
   props: {
     product: Object,
   },
+
   methods: {
+    ...mapActions(["getProduct", "getEmptyProduct"]),
     hideModal: function () {
-      // console.log(this.$refs["my-modal"]);
-      // console.log("hide");
+      this.getEmptyProduct();
       this.$refs["my-modal"].hide();
     },
-    showModal() {
-      // console.log("show");
+    showModal(id) {
+      this.getProduct(id);
       this.$refs["my-modal"].show();
-      // this.$refs["my-product"].style.opacity = 0.5;
     },
   },
 };

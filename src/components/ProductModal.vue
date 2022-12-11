@@ -1,7 +1,7 @@
 <template>
   <!--  Modal -->
 
-  <div>
+  <div v-if="Product">
     <button
       class="btn-close p-4 position-absolute top-0 end-0 z-index-20 shadow-0"
       type="button"
@@ -10,11 +10,7 @@
     <!-- <div class="modal-body p-0">  -->
     <div class="row align-items-stretch">
       <div class="col-lg-6 p-lg-0">
-        <img
-          class="img-fluid"
-          src="../../template/img/product-5.jpg"
-          alt="..."
-        />
+        <img class="img-fluid" :src="Product.image" alt="..." />
       </div>
       <div class="col-lg-6">
         <div class="p-4 my-md-4">
@@ -35,13 +31,10 @@
               <i class="fas fa-star small text-warning"></i>
             </li>
           </ul>
-          <h2 class="h4">Red digital smartwatch</h2>
-          <p class="text-muted">$250</p>
+          <h2 class="h4">{{ Product.title }}</h2>
+          <p class="text-muted">${{ Product.price }}</p>
           <p class="text-sm mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut
-            ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et
-            magnis dis parturient montes nascetur ridiculus mus. Vestibulum
-            ultricies aliquam convallis.
+            {{ Product.description }}
           </p>
           <div class="row align-items-stretch mb-4 gx-0">
             <div class="col-sm-7">
@@ -55,9 +48,9 @@
                   px-3
                 "
               >
-                <span class="small text-uppercase text-gray mr-4 no-select"
-                  >Quantity</span
-                >
+                <span class="small text-uppercase text-gray mr-4 no-select">{{
+                  Product.rating.count
+                }}</span>
                 <div class="quantity">
                   <button class="dec-btn p-0">
                     <i class="fas fa-caret-left"></i>
@@ -103,11 +96,13 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "ProductModal",
+  computed: mapGetters(["Product"]),
   methods: {
+    ...mapActions(["getProduct"]),
     modalClose: function () {
-      // console.log("close modal");
       this.$emit("closeModal");
     },
   },
