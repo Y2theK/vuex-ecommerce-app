@@ -1,27 +1,17 @@
 <template>
   <div class="container">
     <!-- HERO SECTION-->
-    <section class="py-5 bg-light">
-      <div class="container">
-        <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
-          <div class="col-lg-6">
-            <h1 class="h2 text-uppercase mb-0">Cart</h1>
-          </div>
-          <div class="col-lg-6 text-lg-end">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb justify-content-lg-end mb-0 px-0 bg-light">
-                <li class="breadcrumb-item">
-                  <router-link :to="{ name: 'home' }" class="text-dark"
-                    >Home</router-link
-                  >
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">Cart</li>
-              </ol>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </section>
+    <breadcrumb-section BreadcrumbTitle="Cart">
+      <template #BreadcrumbLists>
+        <li class="breadcrumb-item">
+          <router-link :to="{ name: 'home' }" class="text-dark"
+            >Home</router-link
+          >
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Cart</li>
+      </template>
+    </breadcrumb-section>
+
     <section class="py-5">
       <h2 class="h5 text-uppercase mb-4">Shopping cart</h2>
       <div class="row">
@@ -263,8 +253,12 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import BreadcrumbSection from "./BreadcrumbSection.vue";
 export default {
   name: "Cart",
+  components: {
+    BreadcrumbSection,
+  },
   computed: mapGetters(["carts"]),
   methods: mapActions(["getUserCarts"]),
   mounted() {
