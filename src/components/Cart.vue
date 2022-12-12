@@ -208,11 +208,13 @@
                 >
               </div>
               <div class="col-md-6 text-md-end">
-                <a class="btn btn-outline-dark btn-sm" href="checkout.html"
+                <router-link
+                  :to="{ name: 'checkout' }"
+                  class="btn btn-outline-dark btn-sm"
                   >Procceed to checkout<i
                     class="fas fa-long-arrow-alt-right ms-2"
                   ></i
-                ></a>
+                ></router-link>
               </div>
             </div>
           </div>
