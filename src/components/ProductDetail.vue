@@ -213,7 +213,9 @@
 
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { createNamespacedHelpers } from "vuex";
+
+const { mapGetters, mapActions } = createNamespacedHelpers("Product");
 import RelatedProducts from "./RelatedProducts.vue";
 export default {
   name: "ProductDetail",
@@ -222,6 +224,7 @@ export default {
   },
   methods: mapActions(["getProduct"]),
   computed: mapGetters(["Product"]),
+
   mounted() {
     this.getProduct(this.$route.params.id);
   },

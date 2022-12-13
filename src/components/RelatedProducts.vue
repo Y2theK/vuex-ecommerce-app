@@ -15,7 +15,9 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { createNamespacedHelpers } from "vuex";
+
+const { mapGetters, mapActions } = createNamespacedHelpers("Product");
 import Product from "./Product.vue";
 export default {
   name: "RelatedProducts",
@@ -26,10 +28,7 @@ export default {
     Product,
   },
   computed: mapGetters(["Products"]),
-  mounted() {
-    // console.log(this.category);
-    this.getRelatedProducts(this.category);
-  },
+
   methods: {
     ...mapActions(["getRelatedProducts"]),
     hideModal: function () {
@@ -38,6 +37,10 @@ export default {
     showModal() {
       this.$refs["product-modal"].show();
     },
+  },
+  mounted() {
+    // console.log(this.category);
+    this.getRelatedProducts(this.category);
   },
 };
 </script>

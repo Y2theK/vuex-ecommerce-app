@@ -7,7 +7,10 @@
 </template>
        
 <script>
-import { mapActions, mapGetters } from "vuex";
+// import { mapActions, mapGetters } from "vuex";
+import { createNamespacedHelpers } from "vuex";
+
+const { mapGetters, mapActions } = createNamespacedHelpers("Product");
 import Product from "./Product.vue";
 export default {
   name: "ProductsList",
