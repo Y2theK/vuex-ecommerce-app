@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
 import BreadcrumbSection from "./BreadcrumbSection.vue";
 import CartTable from "./CartTable.vue";
 import OrderTable from "./OrderTable.vue";
@@ -42,11 +41,6 @@ export default {
     CartTable,
     OrderTable,
     CartNav,
-  },
-  computed: mapGetters(["carts"]),
-  methods: mapActions(["getUserCarts"]),
-  mounted() {
-    this.getUserCarts();
   },
 };
 </script>

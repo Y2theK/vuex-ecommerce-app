@@ -141,3 +141,21 @@
     </table>
   </div>
 </template>
+<script>
+import { mapActions, mapGetters } from "vuex";
+export default {
+  name: "CartTable",
+  computed: {
+    ...mapGetters(["cart"]),
+    ...mapGetters("Product", ["Products"]),
+  },
+  methods: mapActions(["getUserCart"]),
+  created() {
+    this.getUserCart();
+  },
+  mounted() {
+    console.log(this.cart.userId);
+    console.log(this.Products);
+  },
+};
+</script>

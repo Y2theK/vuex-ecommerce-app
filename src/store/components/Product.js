@@ -1,5 +1,6 @@
 import axios from "axios";
 export default {
+  namespaced: true,
   state: {
     products: [],
     product: {},
@@ -22,8 +23,8 @@ export default {
     setProduct(state, product) {
       state.product = product;
     },
-    emptyProduct(state, emptyObject) {
-      state.product = emptyObject;
+    emptyProducts(state, emptyArray) {
+      state.product = emptyArray;
     },
   },
   actions: {
@@ -68,8 +69,8 @@ export default {
       );
       commit("setProducts", res.data);
     },
-    async getEmptyProduct({ commit }) {
-      commit("emptyProduct", {});
+    async getEmptyProducts({ commit }) {
+      commit("emptyProducts", []);
     },
   },
 };
