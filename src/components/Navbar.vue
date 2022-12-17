@@ -47,7 +47,7 @@
               >
                 <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart<small
                   class="text-gray fw-normal"
-                  >(2)</small
+                  >({{ cart.products.length }})</small
                 ></router-link
               >
             </li>
@@ -70,8 +70,15 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Navbar",
+  computed: mapGetters(["cart"]),
+  methods: mapActions(["getCart"]),
+
+  created() {
+    this.getCart();
+  },
 };
 </script>
 

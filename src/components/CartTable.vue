@@ -20,26 +20,36 @@
           </th>
         </tr>
       </thead>
-      <tbody class="border-0" v-for="product in Products" :key="product.id">
+      <tbody
+        class="border-0"
+        v-for="{ product, quantity } in cart.products"
+        :key="product.id"
+      >
         <tr>
           <th class="ps-0 py-3 border-light" scope="row">
             <div class="d-flex align-items-center">
               <router-link
                 class="reset-anchor d-block animsition-link"
-                :to="{ name: 'product-detail', params: { id: product.id } }"
+                :to="{
+                  name: 'product-detail',
+                  params: { id: product.id },
+                }"
                 ><img :src="product.image" alt="..." width="50"
               /></router-link>
               <div class="ms-3">
                 <small class="">
                   <router-link
                     class="reset-anchor animsition-link"
-                    :to="{ name: 'product-detail', params: { id: product.id } }"
+                    :to="{
+                      name: 'product-detail',
+                      params: { id: product.id },
+                    }"
                   >
                     <span v-if="product.title.length < 30">
                       {{ product.title }}
                     </span>
                     <span v-else>
-                      {{ product.title.substring(0, 30) + "..." }}
+                      {{ product.title.substring(0, 28) + "..." }}
                     </span>
                   </router-link>
                 </small>
@@ -67,9 +77,9 @@
                   <i class="fas fa-caret-left"></i>
                 </button>
                 <input
-                  class="form-control form-control-sm border-0 shadow-0 p-0"
                   type="text"
-                  value="1"
+                  :value="quantity"
+                  class="form-control form-control-sm border-0 shadow-0 p-0"
                 />
                 <button class="inc-btn p-0">
                   <i class="fas fa-caret-right"></i>
@@ -78,7 +88,7 @@
             </div>
           </td>
           <td class="p-3 align-middle border-light">
-            <p class="mb-0 small">$250</p>
+            <p class="mb-0 small">${{ quantity * product.price }}</p>
           </td>
           <td class="p-3 align-middle border-light">
             <a class="reset-anchor" href="#!"
@@ -90,17 +100,11 @@
     </table>
   </div>
 </template>
+
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   name: "CartTable",
-  computed: {
-    ...mapGetters(["cart"]),
-    ...mapGetters("Product", ["Products"]),
-  },
-  methods: mapActions(["getUserCart"]),
-  created() {
-    this.getUserCart();
-  },
+  computed: mapGetters(["cart"]),
 };
 </script>

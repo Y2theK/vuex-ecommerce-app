@@ -27,8 +27,10 @@
             ></a>
           </li>
           <li class="list-inline-item m-0 p-0">
-            <router-link class="btn btn-sm btn-dark" :to="{ name: 'cart' }"
-              >Add to cart</router-link
+            <a
+              class="btn btn-sm btn-dark"
+              @click.prevent="addNewProductToCart(product)"
+              >Add to cart</a
             >
           </li>
           <li class="list-inline-item me-0">
@@ -51,6 +53,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import ProductModal from "./ProductModal.vue";
 export default {
   name: "Product",
@@ -61,6 +64,13 @@ export default {
     product: Object,
   },
   methods: {
+    ...mapActions(["addToCart"]),
+    addNewProductToCart(product) {
+      this.addToCart({
+        product,
+        quantity: 1,
+      });
+    },
     hideModal: function () {
       this.$refs["my-modal"].hide();
     },

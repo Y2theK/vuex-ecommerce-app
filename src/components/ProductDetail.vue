@@ -79,7 +79,7 @@
                   justify-content-center
                   px-0
                 "
-                href="cart.html"
+                @click.prevent="addNewProductToCart(Product)"
                 >Add to cart</a
               >
             </div>
@@ -213,17 +213,30 @@
 
 
 <script>
-import { createNamespacedHelpers } from "vuex";
-
-const { mapGetters, mapActions } = createNamespacedHelpers("Product");
+import { mapActions, mapGetters } from "vuex";
 import RelatedProducts from "./RelatedProducts.vue";
 export default {
   name: "ProductDetail",
   components: {
     RelatedProducts,
   },
-  methods: mapActions(["getProduct"]),
-  computed: mapGetters(["Product"]),
+
+  methods: {
+    ...mapActions({
+      getProduct: "Product/getProduct",
+      addToCart: "addToCart",
+    }),
+    // ...mapActions(["addToCart"]),
+    addNewProductToCart(product) {
+      this.addToCart({
+        product,
+        quantity: 1,
+      });
+    },
+  },
+  computed: mapGetters({
+    Product: "Product/Product",
+  }),
 
   mounted() {
     this.getProduct(this.$route.params.id);

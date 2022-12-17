@@ -19,57 +19,36 @@ export default {
     setCart(state, cart) {
       state.cart = cart;
     },
-    addNewCart(state, cart) {
-      state.carts.unshift(cart);
-    },
-    updateCart(state, cart) {
-      state.carts.forEach((c) => {
-        if (c.id === cart.id) {
-          c = cart;
-        }
+    addToCart(state, { product, quantity }) {
+      let productIsInCart = state.cart.products.find((item) => {
+        return item.product.id === product.id;
       });
-    },
-    deleteCart(state, removeId) {
-      state.carts = state.carts.filter((cart) => {
-        return cart.id !== removeId;
-      });
+
+      if (productIsInCart) {
+        productIsInCart.quantity += quantity;
+        return;
+      } else {
+        state.cart.products.push({ product, quantity });
+      }
     },
   },
-  actions: {
-    async getUserCart({ commit, dispatch, rootGetters }) {
-      //get user latest cart
-      let res = await axios.get("https://fakestoreapi.com/carts/user/1");
-      let cart = res.data[0]; //take the first item from array
-      commit("setCart", cart);
 
-      //gonna take product id from cart and set that products in store
-      let products = [];
+  actions: {
+    async getCart({ commit, dispatch, rootGetters }) {
+      //get user latest cart
+      let res = await axios.get("https://fakestoreapi.com/carts/user/2");
+      let cart = res.data[0]; //take the first item from array
       cart.products.forEach(async (prod) => {
-        //product get by id
         await dispatch("Product/getProduct", prod.productId, { root: true });
-        //get the product and push
         let product = rootGetters["Product/Product"];
-        products.push(product);
+        delete prod.productId;
+        prod.product = product;
       });
-      //commit to products
-      commit("Product/setProducts", products, { root: true });
+      // console.log(cart);
+      commit("setCart", cart);
     },
-    async addNewCart({ commit }, newCart) {
-      let res = await axios.post("https://fakestoreapi.com/carts", newCart);
-      console.log(res.data);
-      commit("addNewCart", res.data);
-    },
-    async updateCart({ commit }, cart) {
-      let res = await axios.put("https://fakestoreapi.com/carts/" + cart.id);
-      console.log(res.data);
-      commit("update", res.data);
-    },
-    async deleteCart({ commit }, removeId) {
-      let res = await axios.delete(
-        "https://fakestoreapi.com/carts/" + removeId
-      );
-      console.log(res.data);
-      commit("deleteCart", removeId);
+    async addToCart({ commit }, { product, quantity }) {
+      commit("addToCart", { product, quantity });
     },
   },
 };
