@@ -94,7 +94,7 @@
             <p class="mb-0 small">${{ quantity * product.price }}</p>
           </td>
           <td class="p-3 align-middle border-light">
-            <a class="reset-anchor" href="#!"
+            <a class="reset-anchor" @click="removeProductFromCart(product.id)"
               ><i class="fas fa-trash-alt small text-muted"></i
             ></a>
           </td>
@@ -109,12 +109,14 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   name: "CartTable",
   methods: {
-    ...mapActions(["updateCart"]),
+    ...mapActions(["updateCart", "removeFromCart"]),
     updateProductQuantityInCart(product, quantityUpd) {
       this.updateCart({ product, quantityUpd });
     },
+    removeProductFromCart(productId) {
+      this.removeFromCart(productId);
+    },
   },
-
   computed: mapGetters(["cart"]),
 };
 </script>

@@ -48,6 +48,11 @@ export default {
         }
       });
     },
+    removeFromCart(state, productId) {
+      state.cart.products = state.cart.products.filter((item) => {
+        return item.product.id !== productId;
+      });
+    },
   },
 
   actions: {
@@ -72,8 +77,10 @@ export default {
       commit("addToCart", { product, quantity });
     },
     async updateCart({ commit }, { product, quantityUpd }) {
-      console.log({ product });
       commit("updateCart", { product, quantityUpd });
+    },
+    async removeFromCart({ commit }, productId) {
+      commit("removeFromCart", productId);
     },
   },
 };
