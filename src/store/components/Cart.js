@@ -11,6 +11,13 @@ export default {
     cart(state) {
       return state.cart;
     },
+    getTotalPrice(state) {
+      let total = 0;
+      state.cart.products.forEach((item) => {
+        total += item.product.price * item.quantity;
+      });
+      return total;
+    },
   },
   mutations: {
     setCarts(state, carts) {
@@ -31,6 +38,16 @@ export default {
         state.cart.products.push({ product, quantity });
       }
     },
+    updateCart(state, { product, quantityUpd }) {
+      state.cart.products.forEach((item) => {
+        if (item.product.id === product.id) {
+          quantityUpd === "inc" ? item.quantity++ : item.quantity--;
+          if (item.quantity <= 0) {
+            item.quantity = 0;
+          }
+        }
+      });
+    },
   },
 
   actions: {
@@ -38,17 +55,25 @@ export default {
       //get user latest cart
       let res = await axios.get("https://fakestoreapi.com/carts/user/2");
       let cart = res.data[0]; //take the first item from array
+      let product;
       cart.products.forEach(async (prod) => {
         await dispatch("Product/getProduct", prod.productId, { root: true });
-        let product = rootGetters["Product/Product"];
+        product = rootGetters["Product/Product"];
+        // product = await axios.get(
+        //   `https://fakestoreapi.com/products/${prod.productId}`
+        // );
         delete prod.productId;
         prod.product = product;
       });
-      // console.log(cart);
+      console.log(cart.products);
       commit("setCart", cart);
     },
     async addToCart({ commit }, { product, quantity }) {
       commit("addToCart", { product, quantity });
+    },
+    async updateCart({ commit }, { product, quantityUpd }) {
+      console.log({ product });
+      commit("updateCart", { product, quantityUpd });
     },
   },
 };

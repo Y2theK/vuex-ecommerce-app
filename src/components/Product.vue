@@ -63,6 +63,7 @@ export default {
   props: {
     product: Object,
   },
+
   methods: {
     ...mapActions(["addToCart"]),
     addNewProductToCart(product) {

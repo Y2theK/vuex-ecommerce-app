@@ -1,6 +1,6 @@
 <template>
   <div class="table-responsive mb-4">
-    <table class="table text-nowrap">
+    <table class="table text-nowrap" v-if="cart.products">
       <thead class="bg-light">
         <tr>
           <th class="border-0 p-3" scope="col">
@@ -30,10 +30,7 @@
             <div class="d-flex align-items-center">
               <router-link
                 class="reset-anchor d-block animsition-link"
-                :to="{
-                  name: 'product-detail',
-                  params: { id: product.id },
-                }"
+                :to="{ name: 'product-detail', params: { id: product.id } }"
                 ><img :src="product.image" alt="..." width="50"
               /></router-link>
               <div class="ms-3">
@@ -73,7 +70,10 @@
                 >Quantity</span
               >
               <div class="quantity">
-                <button class="dec-btn p-0">
+                <button
+                  class="dec-btn p-0"
+                  @click="updateProductQuantityInCart(product, 'dec')"
+                >
                   <i class="fas fa-caret-left"></i>
                 </button>
                 <input
@@ -81,7 +81,10 @@
                   :value="quantity"
                   class="form-control form-control-sm border-0 shadow-0 p-0"
                 />
-                <button class="inc-btn p-0">
+                <button
+                  class="inc-btn p-0"
+                  @click="updateProductQuantityInCart(product, 'inc')"
+                >
                   <i class="fas fa-caret-right"></i>
                 </button>
               </div>
@@ -102,9 +105,16 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "CartTable",
+  methods: {
+    ...mapActions(["updateCart"]),
+    updateProductQuantityInCart(product, quantityUpd) {
+      this.updateCart({ product, quantityUpd });
+    },
+  },
+
   computed: mapGetters(["cart"]),
 };
 </script>

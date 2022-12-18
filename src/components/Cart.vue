@@ -34,6 +34,7 @@ import BreadcrumbSection from "./BreadcrumbSection.vue";
 import CartTable from "./CartTable.vue";
 import OrderTable from "./OrderTable.vue";
 import CartNav from "./CartNav.vue";
+
 export default {
   name: "Cart",
   components: {
