@@ -109,12 +109,15 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   name: "CartTable",
   methods: {
-    ...mapActions(["updateCart", "removeFromCart"]),
+    ...mapActions(["updateCart", "removeFromCart", "getTotalPrice"]),
     updateProductQuantityInCart(product, quantityUpd) {
       this.updateCart({ product, quantityUpd });
+      this.getTotalPrice();
     },
+
     removeProductFromCart(productId) {
       this.removeFromCart(productId);
+      this.getTotalPrice();
     },
   },
   computed: mapGetters(["cart"]),

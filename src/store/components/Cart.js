@@ -3,6 +3,7 @@ export default {
   state: {
     carts: [],
     cart: {},
+    cartTotalPrice: null,
   },
   getters: {
     carts(state) {
@@ -11,12 +12,8 @@ export default {
     cart(state) {
       return state.cart;
     },
-    getTotalPrice(state) {
-      let total = 0;
-      state.cart.products.forEach((item) => {
-        total += item.product.price * item.quantity;
-      });
-      return total;
+    cartTotalPrice(state) {
+      return state.cartTotalPrice;
     },
   },
   mutations: {
@@ -53,6 +50,17 @@ export default {
         return item.product.id !== productId;
       });
     },
+    applyDiscountCoupon(state, price) {
+      state.cartTotalPrice = price;
+    },
+    setTotalPrice(state) {
+      let total = 0;
+      state.cart.products.forEach((item) => {
+        total += item.product.price * item.quantity;
+      });
+      total = total.toFixed(2);
+      state.cartTotalPrice = total;
+    },
   },
 
   actions: {
@@ -81,6 +89,12 @@ export default {
     },
     async removeFromCart({ commit }, productId) {
       commit("removeFromCart", productId);
+    },
+    async applyDiscountCoupon({ commit }, price) {
+      commit("applyDiscountCoupon", price);
+    },
+    async getTotalPrice({ commit }) {
+      commit("setTotalPrice");
     },
   },
 };
