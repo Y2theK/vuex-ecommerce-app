@@ -1,6 +1,6 @@
 <template>
   <div class="col-lg-8">
-    <form action="#">
+    <form action="" @submit.prevent="sendEmail">
       <div class="row gy-3">
         <div class="col-lg-6">
           <label class="form-label text-sm text-uppercase" for="firstName"
@@ -9,7 +9,9 @@
           <input
             class="form-control form-control-lg"
             type="text"
+            v-model="contactDetail.firstName"
             id="firstName"
+            required
             placeholder="Enter your first name"
           />
         </div>
@@ -20,7 +22,9 @@
           <input
             class="form-control form-control-lg"
             type="text"
+            v-model="contactDetail.lastName"
             id="lastName"
+            required
             placeholder="Enter your last name"
           />
         </div>
@@ -31,6 +35,8 @@
           <input
             class="form-control form-control-lg"
             type="email"
+            v-model="contactDetail.email"
+            required
             id="email"
             placeholder="e.g. Jason@example.com"
           />
@@ -43,6 +49,8 @@
             class="form-control form-control-lg"
             type="tel"
             id="phone"
+            required
+            v-model.number="contactDetail.phoneNo"
             placeholder="e.g. +02 245354745"
           />
         </div>
@@ -54,6 +62,7 @@
             class="form-control form-control-lg"
             type="text"
             id="company"
+            v-model="contactDetail.companyName"
             placeholder="Your company name"
           />
         </div>
@@ -77,6 +86,7 @@
             class="form-control form-control-lg"
             type="text"
             id="address"
+            v-model="contactDetail.addressLine1"
             placeholder="House number and street name"
           />
         </div>
@@ -87,6 +97,7 @@
           <input
             class="form-control form-control-lg"
             type="text"
+            v-model="contactDetail.addressLine2"
             id="addressalt"
             placeholder="Apartment, Suite, Unit, etc (optional)"
           />
@@ -95,13 +106,25 @@
           <label class="form-label text-sm text-uppercase" for="city"
             >Town/City
           </label>
-          <input class="form-control form-control-lg" type="text" id="city" />
+          <input
+            class="form-control form-control-lg"
+            type="text"
+            id="city"
+            required
+            v-model="contactDetail.city"
+          />
         </div>
         <div class="col-lg-6">
           <label class="form-label text-sm text-uppercase" for="state"
             >State/County
           </label>
-          <input class="form-control form-control-lg" type="text" id="state" />
+          <input
+            class="form-control form-control-lg"
+            type="text"
+            id="state"
+            required
+            v-model="contactDetail.country"
+          />
         </div>
 
         <div class="col-lg-12 form-group">
@@ -111,3 +134,86 @@
     </form>
   </div>
 </template>
+<script>
+import emailjs from "emailjs-com";
+import { mapGetters } from "vuex";
+export default {
+  name: "BillingAddress",
+  data() {
+    return {
+      contactDetail: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNo: "",
+        companyName: "",
+        addressLine1: "",
+        addressLine2: "",
+        city: "",
+        country: "",
+      },
+      orderDetail: "",
+    };
+  },
+  computed: {
+    ...mapGetters(["cart", "cartTotalPrice"]),
+    name() {
+      return this.contactDetail.firstName + " " + this.contactDetail.lastName;
+    },
+    contactDetailObject() {
+      return `Contact Detail 
+      Phone No :  ${this.contactDetail.phoneNo}
+      City :  ${this.contactDetail.city} 
+      Country : ${this.contactDetail.country}`;
+    },
+    orderDetailObject() {
+      this.cart.products.forEach((item) => {
+        this.orderDetail += `${item.product.title} : ${item.quantity}
+`;
+      });
+      // this.orderDetail = ` Total :   ${this.cartTotalPrice}`;
+      return this.orderDetail;
+    },
+  },
+  methods: {
+    sendEmail() {
+      // console.log(this.orderDetailObject, this.cartTotalPrice);
+      // console.log(
+      //   process.env,
+      //   process.env.VUE_APP_USER_ID,
+      //   process.env.VUE_APP_SERVICE_ID,
+      //   process.env.VUE_APP_TEMPLATE_ID
+      // );
+      try {
+        emailjs.send(
+          process.env.VUE_APP_SERVICE_ID,
+          process.env.VUE_APP_TEMPLATE_ID,
+          {
+            name: this.name,
+            email: this.contactDetail.email,
+            contactDetail: this.contactDetailObject,
+            orderDetail: this.orderDetailObject,
+            totalPrice: this.cartTotalPrice,
+          },
+          process.env.VUE_APP_USER_ID
+        );
+        // .then((res) => {
+        //   // console.log(res);
+        // });
+      } catch (error) {
+        console.log({ error });
+      }
+      // Reset form field
+      this.contactDetail.firstName = "";
+      this.contactDetail.lastName = "";
+      this.contactDetail.email = "";
+      this.contactDetail.phoneNo = "";
+      this.contactDetail.companyName = "";
+      this.contactDetail.addressLine1 = "";
+      this.contactDetail.addressLine2 = "";
+      this.contactDetail.city = "";
+      this.contactDetail.country = "";
+    },
+  },
+};
+</script>
