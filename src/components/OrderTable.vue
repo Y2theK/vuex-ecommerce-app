@@ -20,20 +20,19 @@
                 <input
                   class="form-control"
                   type="text"
-                  @change="coupon.couponText = null"
                   v-model="couponCode"
                   placeholder="Enter your coupon"
                 />
                 <p
                   class="w-100"
-                  :class="[coupon.status ? 'text-success' : 'text-danger']"
+                  :class="[coupon.status ? 'text-danger' : 'text-success']"
                   v-if="coupon.couponText"
                 >
                   <small class="">{{ coupon.couponText }}</small>
                 </p>
                 <button
                   class="btn btn-dark btn-sm w-100"
-                  @click.prevent="applyCouponCode(100)"
+                  @click.prevent="applyCouponCode()"
                 >
                   <i class="fas fa-gift me-2"></i>Apply coupon
                 </button>
@@ -61,42 +60,29 @@ export default {
     };
   },
   watch: {
+    // discount() {
+    //   this.coupon.status = this.discount.discountError;
+    //   this.coupon.couponText = this.discount.discountStatusText;
+    // },
     cartTotalPrice() {
       this.couponPrice = this.cartTotalPrice;
     },
   },
   computed: {
-    ...mapGetters(["cartTotalPrice"]),
+    ...mapGetters(["cartTotalPrice", "discount"]),
   },
   mounted() {
     this.couponPrice = this.cartTotalPrice;
+    this.coupon.status = this.discount.discountError;
+    this.coupon.couponText = this.discount.discountStatusText;
     this.getTotalPrice();
   },
   methods: {
     ...mapActions(["applyDiscountCoupon", "getTotalPrice"]),
-    async applyCouponCode(discount) {
-      //coupon code must be godyk
-      //cartTotalPrice must be 5 times than discount
-      //only when isApplyCoupon is false
-      if (this.couponCode !== "godyk") {
-        this.coupon.couponText = "This Coupon is not valid...";
-        return;
-      }
-      if (this.cartTotalPrice < discount * 5) {
-        this.coupon.couponText = "Buy more to activate coupon...";
-        return;
-      }
-      if (this.isApplyCoupon) {
-        this.coupon.couponText = "Coupon is already activated...";
-        return;
-      }
-
-      this.couponPrice -= discount;
-      this.couponPrice = this.couponPrice.toFixed(2);
-      this.coupon.couponText = "Coupon is successfully activated...";
-      this.coupon.status = true;
-      this.isApplyCoupon = true;
-      this.applyDiscountCoupon(this.couponPrice);
+    async applyCouponCode() {
+      await this.applyDiscountCoupon(this.couponCode);
+      this.coupon.status = this.discount.discountError;
+      this.coupon.couponText = this.discount.discountStatusText;
     },
   },
 };

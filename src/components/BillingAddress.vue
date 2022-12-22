@@ -161,7 +161,7 @@ export default {
       return this.contactDetail.firstName + " " + this.contactDetail.lastName;
     },
     contactDetailObject() {
-      return `Contact Detail 
+      return `
       Phone No :  ${this.contactDetail.phoneNo}
       City :  ${this.contactDetail.city} 
       Country : ${this.contactDetail.country}`;
@@ -177,13 +177,6 @@ export default {
   },
   methods: {
     sendEmail() {
-      // console.log(this.orderDetailObject, this.cartTotalPrice);
-      // console.log(
-      //   process.env,
-      //   process.env.VUE_APP_USER_ID,
-      //   process.env.VUE_APP_SERVICE_ID,
-      //   process.env.VUE_APP_TEMPLATE_ID
-      // );
       try {
         emailjs.send(
           process.env.VUE_APP_SERVICE_ID,
@@ -197,9 +190,6 @@ export default {
           },
           process.env.VUE_APP_USER_ID
         );
-        // .then((res) => {
-        //   // console.log(res);
-        // });
       } catch (error) {
         console.log({ error });
       }
@@ -213,6 +203,7 @@ export default {
       this.contactDetail.addressLine2 = "";
       this.contactDetail.city = "";
       this.contactDetail.country = "";
+      this.orderDetail = "";
     },
   },
 };

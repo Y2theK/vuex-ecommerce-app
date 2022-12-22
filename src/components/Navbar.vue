@@ -75,8 +75,8 @@ export default {
   name: "Navbar",
   computed: mapGetters(["cart"]),
   methods: mapActions(["getCart"]),
-  created() {
-    this.getCart();
+  async created() {
+    await this.getCart();
   },
 };
 </script>

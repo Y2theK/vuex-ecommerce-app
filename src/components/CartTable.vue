@@ -110,14 +110,14 @@ export default {
   name: "CartTable",
   methods: {
     ...mapActions(["updateCart", "removeFromCart", "getTotalPrice"]),
-    updateProductQuantityInCart(product, quantityUpd) {
-      this.updateCart({ product, quantityUpd });
-      this.getTotalPrice();
+    async updateProductQuantityInCart(product, quantityUpd) {
+      await this.updateCart({ product, quantityUpd });
+      await this.getTotalPrice();
     },
 
-    removeProductFromCart(productId) {
-      this.removeFromCart(productId);
-      this.getTotalPrice();
+    async removeProductFromCart(productId) {
+      await this.removeFromCart(productId);
+      await this.getTotalPrice();
     },
   },
   computed: mapGetters(["cart"]),

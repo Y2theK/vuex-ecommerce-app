@@ -4,6 +4,13 @@ export default {
     carts: [],
     cart: {},
     cartTotalPrice: null,
+    discount: {
+      isApplyDiscount: false,
+      discountRate: 100,
+      discountCouponCode: "godyk",
+      discountStatusText: "",
+      discountError: false,
+    },
   },
   getters: {
     carts(state) {
@@ -14,6 +21,9 @@ export default {
     },
     cartTotalPrice(state) {
       return state.cartTotalPrice;
+    },
+    discount(state) {
+      return state.discount;
     },
   },
   mutations: {
@@ -50,15 +60,29 @@ export default {
         return item.product.id !== productId;
       });
     },
-    applyDiscountCoupon(state, price) {
-      state.cartTotalPrice = price;
+    applyDiscountCoupon(state, discountCouponCode) {
+      if (state.discount.isApplyDiscount) {
+        state.discount.discountStatusText = "Coupon is already activated...";
+        // state.discount.discountError = true;
+        return;
+      }
+      if (state.cartTotalPrice < state.discount.discountRate * 5) {
+        state.discount.discountStatusText = "Buy more to activate coupon...";
+        state.discount.discountError = true;
+        return;
+      }
+      if (discountCouponCode !== "godyk") {
+        state.discount.discountStatusText = "This Coupon is not valid...";
+        state.discount.discountError = true;
+        return;
+      }
+
+      state.discount.discountStatusText = "Coupon is successfully activated...";
+      state.discount.isApplyDiscount = true;
+      state.discount.discountError = false;
+      state.cartTotalPrice -= state.discount.discountRate;
     },
-    setTotalPrice(state) {
-      let total = 0;
-      state.cart.products.forEach((item) => {
-        total += item.product.price * item.quantity;
-      });
-      total = total.toFixed(2);
+    setTotalPrice(state, total) {
       state.cartTotalPrice = total;
     },
   },
@@ -90,11 +114,24 @@ export default {
     async removeFromCart({ commit }, productId) {
       commit("removeFromCart", productId);
     },
-    async applyDiscountCoupon({ commit }, price) {
-      commit("applyDiscountCoupon", price);
+    async applyDiscountCoupon({ commit }, discountCouponCode) {
+      commit("applyDiscountCoupon", discountCouponCode);
     },
-    async getTotalPrice({ commit }) {
-      commit("setTotalPrice");
+    async getTotalPrice({ commit, state }) {
+      let total = 0;
+      state.cart.products.forEach((item) => {
+        total += item.product.price * item.quantity;
+      });
+
+      if (
+        state.discount.isApplyDiscount &&
+        total > state.discount.discountRate * 5
+      ) {
+        total = total - state.discount.discountRate;
+      }
+      total = total.toFixed(2);
+      console.log(total);
+      commit("setTotalPrice", total);
     },
   },
 };
