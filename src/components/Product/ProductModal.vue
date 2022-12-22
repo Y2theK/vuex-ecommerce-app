@@ -86,7 +86,7 @@
                   justify-content-center
                   px-0
                 "
-                href="cart.html"
+                @click.prevent="addNewProductToCart(Product)"
                 >Add to cart</a
               >
             </div>
@@ -108,6 +108,15 @@ export default {
   },
 
   methods: {
+    ...mapActions({
+      addToCart: "addToCart",
+    }),
+    addNewProductToCart(product) {
+      this.addToCart({
+        product,
+        quantity: 1,
+      });
+    },
     modalClose: function () {
       this.$emit("closeModal");
     },
