@@ -11,7 +11,7 @@
         <router-link class="category-item" :to="{ name: 'shop' }"
           ><img
             class="img-fluid"
-            src="../../template/img/cat-img-1.jpg"
+            src="@a/template/img/cat-img-1.jpg"
             alt=""
           /><strong class="category-item-title text-center">{{
             categories[3]
@@ -22,7 +22,7 @@
         <router-link class="category-item mb-4" :to="{ name: 'shop' }"
           ><img
             class="img-fluid"
-            src="../../template/img/cat-img-2.jpg"
+            src="@a/template/img/cat-img-2.jpg"
             alt=""
           /><strong class="category-item-title">{{
             categories[2]
@@ -30,7 +30,7 @@
         ><router-link class="category-item" :to="{ name: 'shop' }"
           ><img
             class="img-fluid"
-            src="../../template/img/cat-img-3.jpg"
+            src="@a/template/img/cat-img-3.jpg"
             alt=""
           /><strong class="category-item-title">{{
             categories[1]
@@ -41,7 +41,7 @@
         <router-link class="category-item" :to="{ name: 'shop' }"
           ><img
             class="img-fluid"
-            src="../../template/img/cat-img-4.jpg"
+            src="@a/template/img/cat-img-4.jpg"
             alt=""
           /><strong class="category-item-title">{{
             categories[0]

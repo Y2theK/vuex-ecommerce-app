@@ -1,10 +1,10 @@
 import VueRouter from "vue-router";
 import Vue from "vue";
-import ProductDetail from "../components/ProductDetail.vue";
+import ProductDetail from "../components/Product/ProductDetail.vue";
 import Home from "../components/Home.vue";
 import Shop from "../components/Shop.vue";
-import Cart from "../components/Cart.vue";
-import Checkout from "../components/Checkout.vue";
+import Cart from "../components/Cart/Cart.vue";
+import Checkout from "../components/Checkout/Checkout.vue";
 
 Vue.use(VueRouter);
 const routes = [

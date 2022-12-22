@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import ProductsList from "./ProductsList.vue";
-import CategoriesList from "./CategoriesList.vue";
+import ProductsList from "./Product/ProductsList.vue";
+import CategoriesList from "./Category/CategoriesList.vue";
 import Services from "./Services.vue";
 import NewsLetter from "./NewsLetter.vue";
 import HeroSection from "./HeroSection.vue";

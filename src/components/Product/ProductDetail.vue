@@ -126,7 +126,7 @@
                     <div class="flex-shrink-0">
                       <img
                         class="rounded-circle"
-                        src="../../template/img/customer-1.png"
+                        src="@a/template/img/customer-1.png"
                         alt=""
                         width="50px"
                         height="50px"
@@ -165,7 +165,7 @@
                     <div class="flex-shrink-0">
                       <img
                         class="rounded-circle"
-                        src="../../template/img/customer-2.png"
+                        src="@a/template/img/customer-2.png"
                         alt=""
                         width="50px"
                         height="50px"
@@ -214,7 +214,7 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import RelatedProducts from "./RelatedProducts.vue";
+import RelatedProducts from "../Product/RelatedProducts.vue";
 export default {
   name: "ProductDetail",
   components: {

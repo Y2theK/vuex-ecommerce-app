@@ -102,7 +102,6 @@ export default {
         delete prod.productId;
         prod.product = product;
       });
-      console.log(cart.products);
       commit("setCart", cart);
     },
     async addToCart({ commit }, { product, quantity }) {

@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import BreadcrumbSection from "./BreadcrumbSection.vue";
+import BreadcrumbSection from "../BreadcrumbSection.vue";
 import CartTable from "./CartTable.vue";
 import OrderTable from "./OrderTable.vue";
 import CartNav from "./CartNav.vue";

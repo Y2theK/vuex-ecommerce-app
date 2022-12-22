@@ -22,10 +22,10 @@
     </body>
   </html>
 </template>
-<script src="../assets/myjs.js"></script>
+<script src="@a/assets/myjs.js"></script>
 
 <style>
-@import url("../assets/mycss.css");
+@import url("../../assets/mycss.css");
 </style>
 <script>
 import Header from "./Header.vue";

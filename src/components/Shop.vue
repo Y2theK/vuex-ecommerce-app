@@ -227,7 +227,7 @@
 </template>
 
 <script>
-import ProductsList from "./ProductsList.vue";
+import ProductsList from "./Product/ProductsList.vue";
 import BreadcrumbSection from "./BreadcrumbSection.vue";
 export default {
   name: "Shop",

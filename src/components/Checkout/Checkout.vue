@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import BreadcrumbSection from "./BreadcrumbSection.vue";
+import BreadcrumbSection from "../BreadcrumbSection.vue";
 import BillingAddress from "./BillingAddress.vue";
 import OrderSummary from "./OrderSummary.vue";
 export default {
