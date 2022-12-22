@@ -66,18 +66,7 @@
             placeholder="Your company name"
           />
         </div>
-        <div class="col-lg-6 form-group">
-          <label class="form-label text-sm text-uppercase" for="country"
-            >Country</label
-          >
-          <select
-            class="country"
-            id="country"
-            data-customclass="form-control form-control-lg rounded-0"
-          >
-            <option value>Choose your country</option>
-          </select>
-        </div>
+
         <div class="col-lg-12">
           <label class="form-label text-sm text-uppercase" for="address"
             >Address line 1

@@ -129,7 +129,7 @@ export default {
         total = total - state.discount.discountRate;
       }
       total = total.toFixed(2);
-      console.log(total);
+
       commit("setTotalPrice", total);
     },
   },
