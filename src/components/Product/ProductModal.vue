@@ -46,35 +46,6 @@
             {{ Product.description }}
           </p>
           <div class="row align-items-stretch mb-4 gx-0">
-            <div class="col-sm-7">
-              <div
-                class="
-                  border
-                  d-flex
-                  align-items-center
-                  justify-content-between
-                  py-1
-                  px-3
-                "
-              >
-                <span class="small text-uppercase text-gray mr-4 no-select">{{
-                  Product.rating.count
-                }}</span>
-                <div class="quantity">
-                  <button class="dec-btn p-0">
-                    <i class="fas fa-caret-left"></i>
-                  </button>
-                  <input
-                    class="form-control border-0 shadow-0 p-0"
-                    type="text"
-                    value="1"
-                  />
-                  <button class="inc-btn p-0">
-                    <i class="fas fa-caret-right"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
             <div class="col-sm-5">
               <a
                 class="
@@ -86,7 +57,7 @@
                   justify-content-center
                   px-0
                 "
-                href="cart.html"
+                @click.prevent="addNewProductToCart(Product)"
                 >Add to cart</a
               >
             </div>
@@ -101,6 +72,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "ProductModal",
   props: {
@@ -108,6 +80,15 @@ export default {
   },
 
   methods: {
+    ...mapActions({
+      addToCart: "addToCart",
+    }),
+    addNewProductToCart(product) {
+      this.addToCart({
+        product,
+        quantity: 1,
+      });
+    },
     modalClose: function () {
       this.$emit("closeModal");
     },
