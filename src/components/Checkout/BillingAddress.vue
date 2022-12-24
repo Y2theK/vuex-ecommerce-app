@@ -69,7 +69,7 @@
 
         <div class="col-lg-12">
           <label class="form-label text-sm text-uppercase" for="address"
-            >Address line 1
+            >Address line 1 (optional)
           </label>
           <input
             class="form-control form-control-lg"
@@ -81,7 +81,7 @@
         </div>
         <div class="col-lg-12">
           <label class="form-label text-sm text-uppercase" for="addressalt"
-            >Address line 2
+            >Address line 2 (optional)
           </label>
           <input
             class="form-control form-control-lg"
@@ -116,8 +116,16 @@
           />
         </div>
 
-        <div class="col-lg-12 form-group">
+        <div class="col-lg-12 form-group mb-4">
           <button class="btn btn-dark" type="submit">Place order</button>
+        </div>
+        <div>
+          <b-alert
+            v-if="order.status"
+            :variant="[order.status ? 'success' : 'danger']"
+            show
+            >{{ order.statusText }}</b-alert
+          >
         </div>
       </div>
     </form>
@@ -130,6 +138,11 @@ export default {
   name: "BillingAddress",
   data() {
     return {
+      order: {
+        status: null,
+        statusText: "Your order is sending",
+      },
+
       contactDetail: {
         firstName: "",
         lastName: "",
@@ -167,18 +180,30 @@ export default {
   methods: {
     sendEmail() {
       try {
-        emailjs.send(
-          process.env.VUE_APP_SERVICE_ID,
-          process.env.VUE_APP_TEMPLATE_ID,
-          {
-            name: this.name,
-            email: this.contactDetail.email,
-            contactDetail: this.contactDetailObject,
-            orderDetail: this.orderDetailObject,
-            totalPrice: this.cartTotalPrice,
-          },
-          process.env.VUE_APP_USER_ID
-        );
+        emailjs
+          .send(
+            process.env.VUE_APP_SERVICE_ID,
+            process.env.VUE_APP_TEMPLATE_ID,
+            {
+              name: this.name,
+              email: this.contactDetail.email,
+              contactDetail: this.contactDetailObject,
+              orderDetail: this.orderDetailObject,
+              totalPrice: this.cartTotalPrice,
+            },
+            process.env.VUE_APP_USER_ID
+          )
+          .then((res) => {
+            console.log(res);
+            if (res.status === 200) {
+              this.order.status = true;
+              this.order.statusText = "Yay! Your order is successfully sent..!";
+            } else {
+              this.order.status = false;
+              this.order.statusText =
+                "Oops! Your order failed. Please Try Again..!";
+            }
+          });
       } catch (error) {
         console.log({ error });
       }
