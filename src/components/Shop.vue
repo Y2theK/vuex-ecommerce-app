@@ -180,7 +180,9 @@
                       name: 'shop',
                       query: {
                         ...$route.query,
-                        page: Number($route.query.page) - 1,
+                        page: $route.query.page
+                          ? Number($route.query.page) - 1
+                          : 1,
                       },
                     }"
                     aria-label="Previous"
@@ -210,7 +212,9 @@
                       name: 'shop',
                       query: {
                         ...$route.query,
-                        page: Number($route.query.page) + 1,
+                        page: $route.query.page
+                          ? Number($route.query.page) + 1
+                          : 2,
                       },
                     }"
                     aria-label="Next"
