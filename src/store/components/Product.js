@@ -28,7 +28,7 @@ export default {
     },
   },
   actions: {
-    async getProducts({ commit }, { page, limit }) {
+    async getProducts({ commit }, { page, limit, category }) {
       // page -> items
       // 1 -> 1-9 -> 0
       // 2 -> 10-18 -> 9
@@ -49,9 +49,11 @@ export default {
       const skip = (page - 1) * limit;
       // console.log({ page, limit, skip });
       //since we dont have skip api, i did what i can for pagination
-      const api_endpoint = `https://fakestoreapi.com/products?limit=${
-        limit + skip
-      }`;
+      let api_endpoint = `https://fakestoreapi.com/products`;
+      if (category) {
+        api_endpoint += `/category/${category}`;
+      }
+      api_endpoint += `?limit=${limit + skip}`;
       // console.log(api_endpoint);
       let res = await axios.get(api_endpoint);
       res = res.data.slice(skip, skip + limit);

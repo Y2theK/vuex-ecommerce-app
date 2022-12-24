@@ -8,7 +8,14 @@
     </header>
     <div class="row">
       <div class="col-md-4">
-        <router-link class="category-item" :to="{ name: 'shop' }"
+        <router-link
+          class="category-item"
+          :to="{
+            name: 'shop',
+            query: {
+              category: categories[3],
+            },
+          }"
           ><img
             class="img-fluid"
             src="@a/template/img/cat-img-1.jpg"
@@ -19,7 +26,14 @@
         >
       </div>
       <div class="col-md-4">
-        <router-link class="category-item mb-4" :to="{ name: 'shop' }"
+        <router-link
+          class="category-item mb-4"
+          :to="{
+            name: 'shop',
+            query: {
+              category: categories[2],
+            },
+          }"
           ><img
             class="img-fluid"
             src="@a/template/img/cat-img-2.jpg"
@@ -27,7 +41,14 @@
           /><strong class="category-item-title">{{
             categories[2]
           }}</strong></router-link
-        ><router-link class="category-item" :to="{ name: 'shop' }"
+        ><router-link
+          class="category-item"
+          :to="{
+            name: 'shop',
+            query: {
+              category: categories[1],
+            },
+          }"
           ><img
             class="img-fluid"
             src="@a/template/img/cat-img-3.jpg"
@@ -38,7 +59,14 @@
         >
       </div>
       <div class="col-md-4">
-        <router-link class="category-item" :to="{ name: 'shop' }"
+        <router-link
+          class="category-item"
+          :to="{
+            name: 'shop',
+            query: {
+              category: categories[0],
+            },
+          }"
           ><img
             class="img-fluid"
             src="@a/template/img/cat-img-4.jpg"

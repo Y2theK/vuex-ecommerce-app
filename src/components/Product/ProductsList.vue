@@ -30,6 +30,7 @@ export default {
       this.getProducts({
         page: this.$route.query.page,
         limit: this.$route.query.limit,
+        category: this.$route.query.category,
       });
     } else {
       this.getProducts({ limit: 20 });
@@ -40,6 +41,7 @@ export default {
       this.getProducts({
         page: this.$route.query.page,
         limit: this.$route.query.limit,
+        category: this.$route.query.category,
       });
     },
   },
