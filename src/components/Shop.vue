@@ -18,7 +18,15 @@
           <!-- SHOP SIDEBAR-->
           <div class="col-lg-3 order-2 order-lg-1">
             <h5 class="text-uppercase mb-4">Categories</h5>
-            <div class="py-2 px-4 bg-dark text-white mb-3">
+            <div
+              class="py-2 px-4 mb-3"
+              :class="[
+                $route.query.category === 'women%27s%20clothing' ||
+                $route.query.category === 'men%27s%20clothing'
+                  ? 'bg-dark text-white'
+                  : 'bg-light text-dark',
+              ]"
+            >
               <strong class="small text-uppercase fw-bold"
                 >Fashion &amp; Acc</strong
               >
@@ -27,50 +35,130 @@
               class="list-unstyled small text-muted ps-lg-4 font-weight-normal"
             >
               <li class="mb-2">
-                <a class="reset-anchor" href="#!">Women's T-Shirts</a>
+                <router-link
+                  :to="{
+                    name: 'shop',
+                    query: { category: 'women%27s%20clothing' },
+                  }"
+                  class="reset-anchor"
+                  >Women's T-Shirts</router-link
+                >
               </li>
               <li class="mb-2">
-                <a class="reset-anchor" href="#!">Men's T-Shirts</a>
+                <router-link
+                  class="reset-anchor"
+                  :to="{
+                    name: 'shop',
+                    query: { category: 'men%27s%20clothing' },
+                  }"
+                  >Men's T-Shirts</router-link
+                >
               </li>
               <li class="mb-2">
-                <a class="reset-anchor" href="#!">Dresses</a>
+                <router-link
+                  class="reset-anchor"
+                  :to="{
+                    name: 'shop',
+                    query: { category: 'women%27s%20clothing' },
+                  }"
+                  >Dresses</router-link
+                >
               </li>
               <li class="mb-2">
-                <a class="reset-anchor" href="#!">Novelty socks</a>
+                <router-link
+                  class="reset-anchor"
+                  :to="{
+                    name: 'shop',
+                    query: { category: 'men%27s%20clothing' },
+                  }"
+                  >Men's Jacket</router-link
+                >
               </li>
               <li class="mb-2">
-                <a class="reset-anchor" href="#!">Women's sunglasses</a>
+                <router-link
+                  class="reset-anchor"
+                  :to="{
+                    name: 'shop',
+                    query: { category: 'women%27s%20clothing' },
+                  }"
+                  >Women's Winter Coat</router-link
+                >
               </li>
               <li class="mb-2">
-                <a class="reset-anchor" href="#!">Men's sunglasses</a>
+                <router-link
+                  class="reset-anchor"
+                  :to="{
+                    name: 'shop',
+                    query: { category: 'men%27s%20clothing' },
+                  }"
+                  >Bags</router-link
+                >
               </li>
             </ul>
-            <div class="py-2 px-4 bg-light mb-3">
-              <strong class="small text-uppercase fw-bold"
-                >Health &amp; Beauty</strong
-              >
+            <div
+              class="py-2 px-4 mb-3"
+              :class="[
+                $route.query.category === 'jewelery'
+                  ? 'bg-dark text-white'
+                  : 'bg-light text-dark',
+              ]"
+            >
+              <strong class="small text-uppercase fw-bold">Jewelery </strong>
             </div>
             <ul
               class="list-unstyled small text-muted ps-lg-4 font-weight-normal"
             >
               <li class="mb-2">
-                <a class="reset-anchor" href="#!">Shavers</a>
-              </li>
-              <li class="mb-2"><a class="reset-anchor" href="#!">bags</a></li>
-              <li class="mb-2">
-                <a class="reset-anchor" href="#!">Cosmetic</a>
-              </li>
-              <li class="mb-2">
-                <a class="reset-anchor" href="#!">Nail Art</a>
+                <router-link
+                  :to="{ name: 'shop', query: { category: 'jewelery' } }"
+                  class="reset-anchor"
+                  >Brooches</router-link
+                >
               </li>
               <li class="mb-2">
-                <a class="reset-anchor" href="#!">Skin Masks &amp; Peels</a>
+                <router-link
+                  class="reset-anchor"
+                  :to="{ name: 'shop', query: { category: 'jewelery' } }"
+                  >Pendants</router-link
+                >
               </li>
               <li class="mb-2">
-                <a class="reset-anchor" href="#!">Korean cosmetics</a>
+                <router-link
+                  class="reset-anchor"
+                  :to="{ name: 'shop', query: { category: 'jewelery' } }"
+                  >Bracelets</router-link
+                >
+              </li>
+              <li class="mb-2">
+                <router-link
+                  class="reset-anchor"
+                  :to="{ name: 'shop', query: { category: 'jewelery' } }"
+                  >Cufflinks</router-link
+                >
+              </li>
+              <li class="mb-2">
+                <router-link
+                  class="reset-anchor"
+                  :to="{ name: 'shop', query: { category: 'jewelery' } }"
+                  >Earrings</router-link
+                >
+              </li>
+              <li class="mb-2">
+                <router-link
+                  class="reset-anchor"
+                  :to="{ name: 'shop', query: { category: 'jewelery' } }"
+                  >Rings</router-link
+                >
               </li>
             </ul>
-            <div class="py-2 px-4 bg-light mb-3">
+            <div
+              class="py-2 px-4 mb-3"
+              :class="[
+                $route.query.category === 'electronics'
+                  ? 'bg-dark text-white'
+                  : 'bg-light text-dark',
+              ]"
+            >
               <strong class="small text-uppercase fw-bold">Electronics</strong>
             </div>
             <ul
@@ -84,38 +172,48 @@
               "
             >
               <li class="mb-2">
-                <a class="reset-anchor" href="#!">Electronics</a>
-              </li>
-              <li class="mb-2">
-                <a class="reset-anchor" href="#!">USB Flash drives</a>
-              </li>
-              <li class="mb-2">
-                <a class="reset-anchor" href="#!">Headphones</a>
-              </li>
-              <li class="mb-2">
-                <a class="reset-anchor" href="#!">Portable speakers</a>
-              </li>
-              <li class="mb-2">
-                <a class="reset-anchor" href="#!"
-                  >Cell Phone bluetooth headsets</a
+                <router-link
+                  class="reset-anchor"
+                  :to="{ name: 'shop', query: { category: 'electronics' } }"
+                  >Electronics</router-link
                 >
               </li>
               <li class="mb-2">
-                <a class="reset-anchor" href="#!">Keyboards</a>
+                <router-link
+                  class="reset-anchor"
+                  :to="{ name: 'shop', query: { category: 'electronics' } }"
+                  >USB Flash drives</router-link
+                >
+              </li>
+              <li class="mb-2">
+                <router-link
+                  class="reset-anchor"
+                  :to="{ name: 'shop', query: { category: 'electronics' } }"
+                  >Monitors</router-link
+                >
+              </li>
+              <li class="mb-2">
+                <router-link
+                  class="reset-anchor"
+                  :to="{ name: 'shop', query: { category: 'electronics' } }"
+                  >Hard Drives</router-link
+                >
+              </li>
+              <li class="mb-2">
+                <router-link
+                  class="reset-anchor"
+                  :to="{ name: 'shop', query: { category: 'electronics' } }"
+                  >Cell Phone bluetooth headsets</router-link
+                >
+              </li>
+              <li class="mb-2">
+                <router-link
+                  class="reset-anchor"
+                  :to="{ name: 'shop', query: { category: 'electronics' } }"
+                  >SSD / RAM</router-link
+                >
               </li>
             </ul>
-            <h6 class="text-uppercase mb-4">Price range</h6>
-            <div class="price-range pt-4 mb-5">
-              <div id="range"></div>
-              <div class="row pt-2">
-                <div class="col-6">
-                  <strong class="small fw-bold text-uppercase">From</strong>
-                </div>
-                <div class="col-6 text-end">
-                  <strong class="small fw-bold text-uppercase">To</strong>
-                </div>
-              </div>
-            </div>
           </div>
           <!-- SHOP LISTING-->
           <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
@@ -134,14 +232,14 @@
                   "
                 >
                   <li class="list-inline-item text-muted me-3">
-                    <a class="reset-anchor p-0" href="#!"
+                    <router-link :to="{ name: 'shop' }" class="reset-anchor p-0"
                       ><i class="fas fa-th-large"></i
-                    ></a>
+                    ></router-link>
                   </li>
                   <li class="list-inline-item text-muted me-3">
-                    <a class="reset-anchor p-0" href="#!"
+                    <router-link :to="{ name: 'shop' }" class="reset-anchor p-0"
                       ><i class="fas fa-th"></i
-                    ></a>
+                    ></router-link>
                   </li>
                   <li class="list-inline-item">
                     <select
