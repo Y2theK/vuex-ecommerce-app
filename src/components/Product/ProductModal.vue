@@ -62,7 +62,7 @@
               >
             </div>
           </div>
-          <a class="btn btn-link text-dark text-decoration-none p-0" href="#!"
+          <a class="btn btn-link text-dark text-decoration-none p-2" href="#!"
             ><i class="far fa-heart me-2"></i>Add to wish list</a
           >
         </div>

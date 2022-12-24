@@ -44,13 +44,14 @@
                   align-items-center
                   justify-content-center
                   px-0
+                  mb-4
                 "
                 @click.prevent="addNewProductToCart(Product)"
                 >Add to cart</a
               >
             </div>
             <div class="col-sm-5 pr-sm-0">
-              <a class="btn btn-sm text-dark p-0 mb-4"
+              <a class="btn btn-sm text-dark p-2 mb-4"
                 ><i class="far fa-heart me-2"></i>Add to wish list</a
               >
             </div>
