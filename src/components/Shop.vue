@@ -331,6 +331,7 @@
 <script>
 import ProductsList from "./Product/ProductsList.vue";
 import BreadcrumbSection from "./BreadcrumbSection.vue";
+import { mapGetters } from "vuex";
 export default {
   name: "Shop",
   data() {
@@ -342,14 +343,30 @@ export default {
     ProductsList,
     BreadcrumbSection,
   },
+  computed: mapGetters(["Products"]),
+  methods: {
+    getPageCount() {
+      if (this.$route.query.category) {
+        this.pageCount = 1;
+      } else {
+        const queryLimit = Number(this.$route.query.limit);
+        const productsTotal = 20;
+        // const productsTotal = this.Products.length;
+        // console.log(this.Products);
+        //minimum acceptable limit is 3
+        //default limit is 9
+        let limit = queryLimit ? (queryLimit < 3 ? 3 : queryLimit) : 9;
+        this.pageCount = Math.ceil(productsTotal / limit);
+      }
+    },
+  },
+  watch: {
+    $route() {
+      this.getPageCount();
+    },
+  },
   mounted() {
-    const queryLimit = Number(this.$route.query.limit);
-    const productsTotal = 20;
-    //minimum acceptable limit is 3
-    //default limit is 9
-    let limit = queryLimit ? (queryLimit < 3 ? 3 : queryLimit) : 9;
-    this.pageCount = Math.ceil(productsTotal / limit);
-    // console.log(this.pageCount);
+    this.getPageCount();
   },
 };
 </script>

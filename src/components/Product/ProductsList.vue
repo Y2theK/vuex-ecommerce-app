@@ -49,18 +49,4 @@ export default {
 </script>
 
 <style>
-/* <!-- gLightbox gallery--> */
-/* @import url("@a/template/vendor/glightbox/css/glightbox.min.css"); */
-/* <!-- Range slider--> */
-/* @import url("@a/template/vendor/nouislider/nouislider.min.css"); */
-/* <!-- Choices CSS--> */
-/* @import url("@a/template/vendor/choices.js/public/assets/styles/choices.min.css"); */
-/* <!-- Swiper slider--> */
-/* @import url("@a/template/vendor/swiper/swiper-bundle.min.css"); */
-/* <!-- Google fonts--> */
-/* @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;700&amp;display=swap"); */
-/* @import url("https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;400;800&amp;display=swap"); */
-/* <!-- Custom stylesheet - for your changes--> */
-/* @import url("@a/template/css/custom.css"); */
-/* @import url("@a/template/css/style.default.css"); */
 </style>
