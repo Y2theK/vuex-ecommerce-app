@@ -96,7 +96,7 @@
                     <div class="flex-shrink-0">
                       <img
                         class="rounded-circle"
-                        src="@a/template/img/customer-1.png"
+                        src="@a/src/assets/img/customer-1.png"
                         alt=""
                         width="50px"
                         height="50px"
@@ -135,7 +135,7 @@
                     <div class="flex-shrink-0">
                       <img
                         class="rounded-circle"
-                        src="@a/template/img/customer-2.png"
+                        src="@a/src/assets/img/customer-2.png"
                         alt=""
                         width="50px"
                         height="50px"

@@ -18,7 +18,7 @@
           }"
           ><img
             class="img-fluid"
-            src="@a/template/img/cat-img-1.jpg"
+            src="@a/src/assets/img/cat-img-1.jpg"
             alt=""
           /><strong class="category-item-title text-center">{{
             categories[3]
@@ -36,7 +36,7 @@
           }"
           ><img
             class="img-fluid"
-            src="@a/template/img/cat-img-2.jpg"
+            src="@a/src/assets/img/cat-img-2.jpg"
             alt=""
           /><strong class="category-item-title">{{
             categories[2]
@@ -51,7 +51,7 @@
           }"
           ><img
             class="img-fluid"
-            src="@a/template/img/cat-img-3.jpg"
+            src="@a/src/assets/img/cat-img-3.jpg"
             alt=""
           /><strong class="category-item-title">{{
             categories[1]
@@ -69,7 +69,7 @@
           }"
           ><img
             class="img-fluid"
-            src="@a/template/img/cat-img-4.jpg"
+            src="@a/src/assets/img/cat-img-4.jpg"
             alt=""
           /><strong class="category-item-title">{{
             categories[0]

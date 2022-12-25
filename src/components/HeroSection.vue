@@ -24,6 +24,6 @@ export default {
 
 <style scoped>
 section {
-  background-image: url("../../template/img/hero-banner-alt.jpg");
+  background-image: url("@a/src/assets/img/hero-banner-alt.jpg");
 }
 </style>
