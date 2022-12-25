@@ -91,7 +91,9 @@
             </div>
           </td>
           <td class="p-3 align-middle border-light">
-            <p class="mb-0 small">${{ quantity * product.price }}</p>
+            <p class="mb-0 small">
+              ${{ (quantity * product.price).toFixed(2) }}
+            </p>
           </td>
           <td class="p-3 align-middle border-light">
             <a class="reset-anchor" @click="removeProductFromCart(product.id)"
