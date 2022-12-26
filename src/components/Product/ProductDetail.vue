@@ -207,6 +207,7 @@ export default {
         product,
         quantity: 1,
       });
+      this.$toaster.success("This item has been added to your cart");
     },
   },
   computed: mapGetters({
