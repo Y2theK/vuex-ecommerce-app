@@ -54,6 +54,7 @@ export default {
   mounted() {
     if (localStorage.getItem("auth")) {
       this.$router.go(-1);
+
       this.$toaster.warning("You have already login. Enjoy shopping :)");
     }
   },
