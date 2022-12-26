@@ -64,10 +64,22 @@
                 ><small class="text-gray fw-normal"> (0)</small></a
               >
             </b-nav-item>
-            <b-nav-item class="nav-item">
-              <a class="nav-link text-dark" href="#!">
-                <i class="fas fa-user me-1 text-gray fw-normal"></i>Login</a
+            <b-nav-item class="nav-item" v-if="!auth">
+              <router-link
+                class="nav-link"
+                :class="[
+                  $route.name === 'login' ? 'text-warning' : 'text-dark',
+                ]"
+                :to="{ name: 'login' }"
               >
+                <i class="fas fa-user me-1 text-gray fw-normal"></i
+                >Login</router-link
+              >
+            </b-nav-item>
+            <b-nav-item class="nav-item" v-else>
+              <a class="nav-link text-dark" @click="logout">
+                <i class="fas fa-user me-1 text-gray fw-normal"></i>Logout
+              </a>
             </b-nav-item>
           </b-navbar-nav>
         </b-collapse>
@@ -80,10 +92,25 @@
 import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Navbar",
+  data() {
+    return {
+      auth: null,
+    };
+  },
   computed: mapGetters(["cart"]),
-  methods: mapActions(["getCart"]),
-  async created() {
-    await this.getCart();
+  methods: {
+    ...mapActions(["getCart"]),
+    logout() {
+      localStorage.removeItem("auth");
+      this.auth = null;
+    },
+  },
+  created() {
+    this.getCart();
+  },
+  mounted() {
+    let authen = localStorage.getItem("auth");
+    if (authen) this.auth = authen;
   },
 };
 </script>
