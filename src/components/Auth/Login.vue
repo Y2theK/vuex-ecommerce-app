@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     login() {
-      if (this.email === "admin@admin.com" && this.password === "admin123") {
+      if (this.email === "test@test.com" && this.password === "test123") {
         localStorage.setItem("auth", this.email);
         this.$toaster.success("You have successfully login :)");
         this.$router.go(-1);
