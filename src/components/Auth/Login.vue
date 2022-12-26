@@ -54,14 +54,22 @@ export default {
   mounted() {
     if (localStorage.getItem("auth")) {
       this.$router.go(-1);
+<<<<<<< HEAD
       this.$toaster.warning("You have already login. Enjoy shopping :)");
+=======
+      this.$toaster.warning("You have already login Sir");
+>>>>>>> 26aca612ff9935745bf99d968cbf90a38b07c0fa
     }
   },
   methods: {
     login() {
       if (this.email === "admin@admin.com" && this.password === "admin123") {
         localStorage.setItem("auth", this.email);
+<<<<<<< HEAD
         this.$toaster.success("You have successfully login :)");
+=======
+        this.$toaster.success("You have successfully login");
+>>>>>>> 26aca612ff9935745bf99d968cbf90a38b07c0fa
         this.$router.go(-1);
       } else {
         this.message = "Please enter correct email and password!";
