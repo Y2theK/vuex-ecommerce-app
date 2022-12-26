@@ -203,6 +203,9 @@ export default {
     }),
     // ...mapActions(["addToCart"]),
     addNewProductToCart(product) {
+      if (!localStorage.getItem("auth")) {
+        return this.$router.push({ name: "login" });
+      }
       this.addToCart({
         product,
         quantity: 1,

@@ -197,7 +197,8 @@ export default {
             console.log(res);
             if (res.status === 200) {
               this.order.status = true;
-              this.order.statusText = "Yay! Your order is successfully sent..!";
+              this.order.statusText = "Yay! Your order is successfully sent :)";
+              this.$toaster.info("Your order is on the wayyy...");
             } else {
               this.order.status = false;
               this.order.statusText =
