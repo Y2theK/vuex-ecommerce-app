@@ -62,7 +62,9 @@
               >
             </div>
           </div>
-          <a class="btn btn-link text-dark text-decoration-none p-2" href="#!"
+          <a
+            class="btn btn-link text-dark text-decoration-none p-2"
+            @click="$toaster.info('This feature is under development :)')"
             ><i class="far fa-heart me-2"></i>Add to wish list</a
           >
         </div>
@@ -85,12 +87,14 @@ export default {
     }),
     addNewProductToCart(product) {
       if (!localStorage.getItem("auth")) {
+        this.$toaster.warning("Plase login to checkout products :)");
         return this.$router.push({ name: "login" });
       }
       this.addToCart({
         product,
         quantity: 1,
       });
+      this.$toaster.success("This item has been added to your cart");
     },
     modalClose: function () {
       this.$emit("closeModal");

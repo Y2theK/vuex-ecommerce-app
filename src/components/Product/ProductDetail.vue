@@ -51,7 +51,9 @@
               >
             </div>
             <div class="col-sm-5 pr-sm-0">
-              <a class="btn btn-sm text-dark p-2 mb-4"
+              <a
+                class="btn btn-sm text-dark p-2 mb-4"
+                @click="$toaster.info('This feature is under development :)')"
                 ><i class="far fa-heart me-2"></i>Add to wish list</a
               >
             </div>
@@ -204,6 +206,7 @@ export default {
     // ...mapActions(["addToCart"]),
     addNewProductToCart(product) {
       if (!localStorage.getItem("auth")) {
+        this.$toaster.warning("Plase login to checkout products :)");
         return this.$router.push({ name: "login" });
       }
       this.addToCart({

@@ -59,7 +59,10 @@
               ></b-nav-item
             >
             <b-nav-item class="nav-item">
-              <a class="nav-link" href="#!">
+              <a
+                class="nav-link"
+                @click="$toaster.info('This feature is under development :)')"
+              >
                 <b-icon icon="heart" class="me-1" variant="dark"></b-icon
                 ><small class="text-gray fw-normal"> (0)</small></a
               >

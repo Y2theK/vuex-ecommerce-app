@@ -24,11 +24,11 @@
             </label>
             <input
               class="form-control form-control-lg"
-              type="text"
+              type="password"
               v-model="password"
               id="password"
               required
-              placeholder="Enter your password"
+              placeholder="e.g. ********"
             />
           </div>
           <small class="text-danger text-sm-center" v-if="message">{{

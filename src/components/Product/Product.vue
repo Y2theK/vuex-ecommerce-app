@@ -22,7 +22,9 @@
       <div class="product-overlay">
         <ul class="mb-0 list-inline">
           <li class="list-inline-item m-0 p-0">
-            <a class="btn btn-sm btn-outline-dark" href="#!"
+            <a
+              class="btn btn-sm btn-outline-dark"
+              @click="$toaster.info('This feature is under development :)')"
               ><i class="far fa-heart"></i
             ></a>
           </li>
@@ -68,6 +70,7 @@ export default {
     ...mapActions(["addToCart"]),
     addNewProductToCart(product) {
       if (!localStorage.getItem("auth")) {
+        this.$toaster.warning("Plase login to checkout products :)");
         return this.$router.push({ name: "login" });
       }
       this.addToCart({

@@ -100,6 +100,7 @@
             type="text"
             id="city"
             required
+            placeholder="e.g. Mandalay"
             v-model="contactDetail.city"
           />
         </div>
@@ -112,6 +113,7 @@
             type="text"
             id="state"
             required
+            placeholder="e.g. Myanmar"
             v-model="contactDetail.country"
           />
         </div>
